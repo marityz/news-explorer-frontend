@@ -3,7 +3,7 @@
 @import url('./__text/_black/logo__text_black.css');
 
 .logo{
-    font-family: Roboto Slab,sans-serif;
+    font-family: Roboto Slab, Inter, sans-serif;
     font-style: normal;
     font-size: 20px;
     line-height: 24px;

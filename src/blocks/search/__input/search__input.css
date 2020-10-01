@@ -19,9 +19,10 @@
 }
 
 
-@media screen  and (min-width: 300px) and (max-width: 759px) {
+@media screen and (max-width: 759px) {
     .search__input {
         max-width: 288px;
+        width: 100%;
         min-height: 54px;
         margin: auto auto 16px auto;
         flex-grow: 3;

@@ -8,7 +8,6 @@
     line-height: 46px;
     letter-spacing: 0px;
     text-align: left;
-    border: #318b29 solid 1px;
     color: #1A1B22;
     margin: 0 auto 64px 0;
     text-overflow:  ellipsis;
@@ -23,7 +22,7 @@
     }
 }
 
-@media screen  and (min-width: 300px) and (max-width: 759px){
+@media screen and (max-width: 759px){
     .result__title{
         font-size: 30px;
         line-height: 34px;

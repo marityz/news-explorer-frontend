@@ -18,7 +18,7 @@
 /*  }*/
 /*}*/
 
-@media screen  and (min-width: 300px) and (max-width: 538px){
+@media screen and (max-width: 538px){
   .popup__content {
     width: 100%;
     height: calc(100vh - 56px);

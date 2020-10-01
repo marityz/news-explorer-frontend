@@ -3,7 +3,6 @@
     box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
     min-width: 168px;
     min-height: 64px;
-    border: #318b29 solid 1px;
     z-index: 2;
     font-family: Roboto, Inter, sans-serif;
     font-style: normal;
@@ -17,13 +16,15 @@
 .search__button:hover {
     background: #347EFF;
     cursor: pointer;
+    outline: none;
 }
 
 
-@media screen  and (min-width: 300px) and (max-width: 759px) {
+@media screen and (max-width: 759px) {
     .search__button {
         margin: auto auto 16px auto;
         max-width: 288px;
+        width: 100%;
         min-height: 54px;
         flex-grow: 3;
         z-index: 1;

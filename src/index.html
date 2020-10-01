@@ -42,7 +42,7 @@
                 кабинете.</p>
             <form class="search__form" name="new-search">
 
-                <input id="inputtag" type="text" name="tag" class="search__input "
+                <input id="inputtag" type="text" name="tag" class="search__input"
                        placeholder="Введите тему новости">
 
                 <button type="submit" class="button search__button">Искать</button>
@@ -139,14 +139,16 @@
         <h3 class="popup__title">Вход</h3>
         <form class="popup__form" name="auth">
             <p class="popup__input-description popup__input-description_margin">Email</p>
-            <input type="email" name="name" id="email"
+            <input type="email" name="email" id="email"
                    class="popup__input popup__input_type_email"
                    placeholder="Введите почту" required inputmode="email">
             <span class="text-error" id="email-error">Некорректно введеные данные</span>
+
             <p class="popup__input-description popup__input-description_margin">Пароль</p>
             <input type="password" name="password" id="password" class="popup__input popup__input_type_link-url"
                    placeholder="Введите пароль" required>
             <span class="text-error" id="password-error"> Некорректно введеные данные</span>
+
             <button type class="button popup__button popup__button_valid" name="button">Войти</button>
             <p class="popup__form-text">или <span class="popup__form_reg-link">Зарегистрироваться</span></p>
         </form>
@@ -156,9 +158,9 @@
     <div class="popup__content popup__content_margin">
         <img src="<%=require('../src/images/close-popup.svg').default%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title">Регистрация </h3>
-        <form class="popup__form" name="auth">
+        <form class="popup__form" name="registr">
             <p class="popup__input-description popup__input-description_margin">Email</p>
-            <input type="email" name="name" id="emailreg"
+            <input type="email" name="emailreg" id="emailreg"
                    class="popup__input popup__input_type_email"
                    placeholder="Введите почту" required inputmode="email">
             <span class="text-error" id="emaireg-error"></span>
@@ -169,14 +171,17 @@
             <span class="text-error" id="passwordreg-error"></span>
 
             <p class="popup__input-description popup__input-description_margin">Имя</p>
-            <input type="password" name="password" id="namedreg" class="popup__input popup__input_type_link-url"
+            <input type="text" name="name" id="namedreg" class="popup__input popup__input_type_link-url"
                    placeholder="Введите своё имя" required>
             <span class="text-error" id="namereg-error"></span>
-             <div class = "popup__button-align">
+
+            <div class="popup__button-align">
                 <p class="text-error" id="button-reg-error"></p>
-                <button type class="button popup__button popup__button_valid popup__button_margin" name="button" id="button-reg">Зарегистрироваться</button>
+                <button type class="button popup__button popup__button_margin" name="button"
+                        id="button-reg">Зарегистрироваться
+                </button>
                 <p class="popup__form-text">или <span class="popup__form_auth-link">Войти</span></p>
-        </div>
+            </div>
         </form>
     </div>
 </div>
@@ -185,7 +190,8 @@
     <div class="popup__content popup__content_padding popup__content_margin">
         <img src="<%=require('./images/close-popup.svg').default%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title">Пользователь успешно зарегистрирован</h3>
-        <p class="popup__form_text popup__form_text__success"><span class="popup__form_success-link">Выполнить вход</span></p>
+        <p class="popup__form_text popup__form_text__success"><span
+                class="popup__form_success-link">Выполнить вход</span></p>
     </div>
 </div>
 <footer class="footer">

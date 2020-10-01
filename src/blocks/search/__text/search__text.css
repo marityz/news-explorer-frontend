@@ -20,7 +20,7 @@
     }
 }
 
-@media screen  and (min-width: 300px) and (max-width: 759px){
+@media screen and (max-width: 759px){
     .search__text{
         margin: auto auto 122px auto;
         max-width: 288px;

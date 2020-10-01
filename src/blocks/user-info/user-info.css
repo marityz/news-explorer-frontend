@@ -7,6 +7,5 @@
 .user-info {
     display: flex;
     flex-direction: column;
-    border: #318b29 solid 1px;
 }
 

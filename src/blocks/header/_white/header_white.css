@@ -12,7 +12,7 @@
 }
 
 
-@media screen  and (min-width: 300px) and (max-width: 759px){
+@media screen and (max-width: 759px){
 
     .header_white{
         min-height: 56px;

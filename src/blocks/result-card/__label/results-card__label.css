@@ -25,7 +25,7 @@
     }
 }
 
-@media screen  and (min-width: 300px) and (max-width: 759px) {
+@media screen  and (max-width: 759px) {
     .results-card__label {
         top: 16px;
         left: 16px;

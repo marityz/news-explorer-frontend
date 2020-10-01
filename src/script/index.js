@@ -6,6 +6,7 @@ import Popup from "./Popup";
     const openPopupRegistrButton = document.querySelector('.header-menu__button');
     const closePopupRegistrButton = popupRegistr.querySelector('.popup__close');
 
+
     const popupAuth = document.querySelector('.popup-auth');
     const openPopupAuth = popupRegistr.querySelector('.popup__form_auth-link');
     const closePopupAuth = popupAuth.querySelector('.popup__close');

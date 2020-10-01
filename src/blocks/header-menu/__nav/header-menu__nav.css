@@ -1,7 +1,6 @@
 
 .header-menu__nav{
     position: relative;
-    border: blue solid 1px;
     list-style-type: none;
     margin-right: 104px;
     display: flex;
@@ -16,7 +15,7 @@
     }
 }
 
-@media screen  and (min-width: 320px) and (max-width: 759px){
+@media screen and (max-width: 759px){
     .header-menu__nav{
         display: none;
     }

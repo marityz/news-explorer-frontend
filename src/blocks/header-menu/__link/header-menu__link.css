@@ -27,7 +27,7 @@
 }
 }
 
-@media screen  and (min-width: 320px) and (max-width: 759px){
+@media screen and (max-width: 759px){
     .header-menu__link{
         display: none;
     }

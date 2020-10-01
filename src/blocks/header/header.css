@@ -20,7 +20,7 @@
     }
 }
 
-@media screen  and (min-width: 300px) and (max-width: 759px){
+@media screen and (max-width: 759px){
     .header{
         min-height: 536px;
         background-image: url('../../images/background-head-320.png');
