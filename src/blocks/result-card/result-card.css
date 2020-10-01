@@ -1,0 +1,36 @@
+@import url('./__image/results-card__image.css');
+@import url('./__image-content/results-card__image-content.css');
+@import url('./__log-in/results-card__log-in.css');
+@import url('./__flag/results-card__flag.css');
+@import url('./__date/results-card__date.css');
+@import url('./__title/results-card__title.css');
+@import url('./__text/results-card__text.css');
+@import url('./__source /results-card__source.css');
+@import url('./__log-in/_notdisplay/results-card__log-in_notdisplay.css');
+@import url('./__label/results-card__label.css');
+@import url('./__icondelete/results-card__icondelete.css');
+
+.result-card{
+    position: relative;
+    border: 1px sienna solid;
+    background-color: #fff;
+    border-radius: 16px;
+    box-sizing: border-box;
+    z-index: 2;
+    padding-bottom: 24px;
+    max-width: 400px;
+
+
+}
+
+@media screen  and (min-width: 760px) and (max-width: 1023px){
+    .result-card{
+        padding-bottom: 16px;
+    }
+}
+
+@media screen  and (min-width: 300px) and (max-width: 759px){
+    .result-card{
+        padding-bottom: 16px;
+    }
+}

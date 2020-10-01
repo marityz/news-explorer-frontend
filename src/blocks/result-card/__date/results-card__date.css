@@ -1,0 +1,18 @@
+.results-card__date{
+    font-family: Source Sans Pro,Inter,sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #B6BCBF;
+    margin-left: 24px;
+
+}
+
+@media screen  and (min-width: 300px) and (max-width: 759px){
+    .results-card__date{
+        margin-left: 16px;
+    }
+}

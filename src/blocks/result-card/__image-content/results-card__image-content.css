@@ -1,0 +1,6 @@
+.results-card__image-content{
+    width: 100%;
+    position: relative;
+    border-radius: 16px 16px 0 0 ;
+    border: #318b29 solid 1px;
+}

@@ -1,0 +1,21 @@
+.about-author__info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 56px;
+    max-width: 600px;
+    border: #318b29 solid 1px;
+}
+
+
+@media screen  and (min-width: 760px) and (max-width: 1023px) {
+    .about-author__info {
+        margin-left: 32px;
+    }
+}
+
+
+@media screen  and (min-width: 300px) and (max-width: 759px) {
+    .about-author__info {
+        margin: 24px auto auto auto;
+    }
+}

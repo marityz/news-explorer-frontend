@@ -1,0 +1,33 @@
+.results-card__label {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    background-color: #FFFFFF;
+    text-align: center;
+    border-radius: 10px;
+    min-width: 88px;
+    min-height: 40px;
+    font-family: Roboto, Inter, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+    letter-spacing: 0px;
+
+
+}
+
+
+@media screen  and (min-width: 760px) and (max-width: 1023px) {
+    .results-card__label {
+        top: 8px;
+        left: 8px;
+    }
+}
+
+@media screen  and (min-width: 300px) and (max-width: 759px) {
+    .results-card__label {
+        top: 16px;
+        left: 16px;
+    }
+}

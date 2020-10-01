@@ -1,0 +1,14 @@
+.header-menu__nav-mobile-content{
+    position: relative;
+    box-sizing: border-box;
+    max-height: 292px;
+    width: 100%;
+    padding: 80px 16px 24px 16px;
+    background: rgba(26,27,34,1);
+    background-size: 100%;
+    border-radius: 16px;
+    z-index: 3;
+}
+
+
+

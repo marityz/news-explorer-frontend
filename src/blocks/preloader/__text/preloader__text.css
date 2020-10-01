@@ -1,0 +1,12 @@
+.preloader__text {
+    font-family: 'Roboto',Inter,sans-serif;
+	text-align: center;
+    padding-bottom: 80px;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    border: #318b29 solid 1px;
+
+}
+

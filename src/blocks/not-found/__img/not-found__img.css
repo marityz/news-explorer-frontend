@@ -1,0 +1,8 @@
+.not-found__img {
+    display: flex;
+    max-height: 74px;
+    max-width: 74px;
+    margin: 0 auto 40px auto;
+    border: #1A1B22 solid 1px;
+
+}
