@@ -16,13 +16,13 @@
             <div class="logo logo_margin">
                 <h1 class="logo__text  logo__text_black">NewsExplorer</h1>
             </div>
-            <nav class="header-menu__nav ">
-                <a class="header-menu__link  header-menu__link_black header-menu__link_active" href="#">Главная</a>
+            <nav class="header-menu__nav">
+                <a class="header-menu__link  header-menu__link_black" href="#">Главная</a>
                 <a class="header-menu__link  header-menu__link_black header-menu__article header-menu__link_active-black"
                    href="./articles.html">Сохранённые
                     статьи</a>
                 <button class="header-menu-auth__button  header-menu__button button">
-                    <p class="header-menu-auth__user-name">Грета</p>
+                    <span class="header-menu-auth__user-name">Грета</span>
                     <img src="<%=require('./images/Union.svg').default%>" alt="кнопка выхода"
                          class="header-menu-auth__logout">
                 </button>
@@ -30,15 +30,15 @@
             <button class="header-menu__nav-mobile-toggle-button header-menu__nav-mobile-toggle-button_black">
             </button>
         </div>
-        <!--        <nav class="header-menu__nav-mobile ">-->
-        <!--            <div class="header-menu__nav-mobile-content">-->
-        <!--                <a class="header-menu__link header-menu__link_mobile" href="#">Главная</a>-->
-        <!--                <a class="header-menu__link header-menu__article header-menu__link_mobile" href="./articles.html">Сохранённые-->
-        <!--                    статьи</a>-->
-        <!--                <button class="header-menu__button header-menu__auth button header-menu__button_mobile">Регистрация-->
-        <!--                </button>-->
-        <!--            </div>-->
-        <!--        </nav>-->
+        <nav class="header-menu__nav-mobile">
+            <div class="header-menu__nav-mobile-content header-menu__nav-mobile-content_white">
+                <a class="header-menu__link header-menu__link_mobile header-menu__link_black" href="#">Главная</a>
+                <a class="header-menu__link header-menu__article header-menu__link_black" href="./articles.html">Сохранённые
+                    статьи</a>
+                <button class="header-menu__button button header-menu__button_mobile header-menu__button_black">Выход
+                </button>
+            </div>
+        </nav>
         <div class="user-info user-info_margin">
             <p class="user-info__subtitle">Сохранённые статьи</p>
             <h1 class="user-info__title"><span class="user-info__title-name">Грета</span>, у вас
@@ -52,7 +52,7 @@
     </header>
     <section class="preloader">
         <i class="preloader__circle"></i>
-        <p class="preloader__text">Идет поиск новостей...</p>
+        <h3 class="preloader__text">Идет поиск новостей...</h3>
     </section>
     <section class="not-found">
         <img class="not-found__img" src="<%=require('../src/images/not-found.svg').default%>"
@@ -154,20 +154,20 @@
     <footer class="footer">
         <div class="footer__group">
             <p class="footer__copyright">© 2020 Supersite, Powered by News API</p>
-            <div class="footer__navigation">
-                <nav class="footer__links">
-                    <a href="https://yandex.ru" class="footer__link" target="_blank">Главная</a>
-                    <a href="https://yandex.ru" class="footer__link" target="_blank">Яндекс.Практикум</a>
-                </nav>
-                <div class="footer__socials">
-                    <a href="https://github.com" class="footer__social" target="_blank"><img
+            <nav class="footer__navigation">
+                <ul class="footer__links">
+                    <li><a href="https://yandex.ru" class="footer__link" target="_blank">Главная</a></li>
+                    <li><a href="https://yandex.ru" class="footer__link" target="_blank">Яндекс.Практикум</a></li>
+                </ul>
+                <ul class="footer__socials">
+                    <li><a href="https://github.com" class="footer__social" target="_blank"><img
                             src="<%=require('../src/images/git.svg').default%>" alt="иконка ссылки на github"
-                            class="footer__img"></a>
-                    <a href="https://facebook.com" class="footer__social" target="_blank"><img
+                            class="footer__img"></a></li>
+                    <li><a href="https://facebook.com" class="footer__social" target="_blank"><img
                             src="<%=require('../src/images/face.svg').default%>" alt="иконка ссылки на facebook"
-                            class="footer__img"></a>
-                </div>
-            </div>
+                            class="footer__img"></a></li>
+                </ul>
+            </nav>
         </div>
     </footer>
 

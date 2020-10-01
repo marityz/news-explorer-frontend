@@ -111,7 +111,7 @@
     </section>
     <section class="preloader">
         <i class="preloader__circle"></i>
-        <p class="preloader__text">Идет поиск новостей...</p>
+        <h2 class="preloader__text">Идет поиск новостей...</h2>
     </section>
     <section class="not-found">
         <img class="not-found__img" src="<%=require('../src/images/not-found.svg').default%>"
@@ -141,15 +141,15 @@
             <p class="popup__input-description popup__input-description_margin">Email</p>
             <input type="email" name="email" id="email"
                    class="popup__input popup__input_type_email"
-                   placeholder="Введите почту" required inputmode="email">
-            <span class="text-error" id="email-error">Некорректно введеные данные</span>
+                   placeholder="Введите почту" required>
+            <span class="text-error" id="email-error"></span>
 
             <p class="popup__input-description popup__input-description_margin">Пароль</p>
             <input type="password" name="password" id="password" class="popup__input popup__input_type_link-url"
-                   placeholder="Введите пароль" required>
-            <span class="text-error" id="password-error"> Некорректно введеные данные</span>
+                   placeholder="Введите пароль" minlength="2" required>
+            <span class="text-error" id="password-error"></span>
 
-            <button type class="button popup__button popup__button_valid" name="button">Войти</button>
+            <button class="button popup__button popup__button_valid" name="button">Войти</button>
             <p class="popup__form-text">или <span class="popup__form_reg-link">Зарегистрироваться</span></p>
         </form>
     </div>
@@ -158,27 +158,28 @@
     <div class="popup__content popup__content_margin">
         <img src="<%=require('../src/images/close-popup.svg').default%>" alt="Кнопка закрытия" class="popup__close">
         <h3 class="popup__title">Регистрация </h3>
+
         <form class="popup__form" name="registr">
             <p class="popup__input-description popup__input-description_margin">Email</p>
             <input type="email" name="emailreg" id="emailreg"
                    class="popup__input popup__input_type_email"
-                   placeholder="Введите почту" required inputmode="email">
-            <span class="text-error" id="emaireg-error"></span>
+                   placeholder="Введите почту" required>
+            <span class="text-error" id="emailreg-error"></span>
 
             <p class="popup__input-description popup__input-description_margin">Пароль</p>
             <input type="password" name="password" id="passwordreg" class="popup__input popup__input_type_link-url"
-                   placeholder="Введите пароль" required>
+                   placeholder="Введите пароль" minlength="8" required>
             <span class="text-error" id="passwordreg-error"></span>
 
             <p class="popup__input-description popup__input-description_margin">Имя</p>
-            <input type="text" name="name" id="namedreg" class="popup__input popup__input_type_link-url"
-                   placeholder="Введите своё имя" required>
+            <input type="text" name="name" id="namereg" class="popup__input popup__input_type_link-url"
+                   placeholder="Введите своё имя" minlength="2" maxlength="30" required>
             <span class="text-error" id="namereg-error"></span>
 
             <div class="popup__button-align">
-                <p class="text-error" id="button-reg-error"></p>
-                <button type class="button popup__button popup__button_margin" name="button"
-                        id="button-reg">Зарегистрироваться
+                <p class="text-error" id="buttonreg-error"></p>
+                <button class="button popup__button popup__button_margin popup__button_valid" name="button"
+                        id="buttonreg">Зарегистрироваться
                 </button>
                 <p class="popup__form-text">или <span class="popup__form_auth-link">Войти</span></p>
             </div>
@@ -197,23 +198,21 @@
 <footer class="footer">
     <div class="footer__group">
         <p class="footer__copyright">© 2020 Supersite, Powered by News API</p>
-        <div class="footer__navigation">
-            <nav class="footer__links">
-                <a href="https://yandex.ru" class="footer__link" target="_blank">Главная</a>
-                <a href="https://yandex.ru" class="footer__link" target="_blank">Яндекс.Практикум</a>
-            </nav>
-            <div class="footer__socials">
-                <a href="https://github.com" class="footer__social" target="_blank"><img
+        <nav class="footer__navigation">
+            <ul class="footer__links">
+                <li><a href="https://yandex.ru" class="footer__link" target="_blank">Главная</a></li>
+                <li><a href="https://yandex.ru" class="footer__link" target="_blank">Яндекс.Практикум</a></li>
+            </ul>
+            <ul class="footer__socials">
+                <li><a href="https://github.com" class="footer__social" target="_blank"><img
                         src="<%=require('../src/images/git.svg').default%>" alt="иконка ссылки на github"
-                        class="footer__img"></a>
-                <a href="https://facebook.com" class="footer__social" target="_blank"><img
+                        class="footer__img"></a></li>
+                <li><a href="https://facebook.com" class="footer__social" target="_blank"><img
                         src="<%=require('../src/images/face.svg').default%>" alt="иконка ссылки на facebook"
-                        class="footer__img"></a>
-            </div>
-        </div>
+                        class="footer__img"></a></li>
+            </ul>
+        </nav>
     </div>
-</footer>
-
 </footer>
 <script src="<%=htmlWebpackPlugin.files.js%>"></script>
 </body>

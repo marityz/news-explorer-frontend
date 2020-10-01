@@ -5,9 +5,14 @@
     border: none;
     background-image: url("../../../../images/header-close.svg");
     z-index: 3;
+    outline: none;
 }
 
 
+.header-menu__nav-mobile-toggle-button:hover{
+    outline: none;
+    cursor: pointer;
+}
 
 
 

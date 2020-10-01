@@ -10,6 +10,8 @@
 @import url('./__button/_mobile/header-menu__button_mobile.css');
 @import url('./__nav-mobile/__nav-mobile-content/header-menu__nav-mobile-content.css');
 @import url('./__link/_black/header-menu__link_black.css');
+@import url('./__nav-mobile/_white/header-menu__nav-mobile-content_white.css');
+@import url('./__button/_black/header-menu__button_black.css');
 
 .header-menu{
     position: relative;

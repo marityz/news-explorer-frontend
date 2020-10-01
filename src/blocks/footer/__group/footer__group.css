@@ -1,5 +1,7 @@
 .footer__group {
     padding: 0 104px;
+    box-sizing: border-box;
+    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;

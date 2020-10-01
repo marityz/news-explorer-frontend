@@ -1,7 +1,7 @@
 .header-menu__button_mobile{
     display: inline-block;
     box-sizing: border-box;
-    border-radius: 100px;
+    border-radius: 0 0 100px 100px;
     color: #FFFFFF;
     margin: 22px auto 0 auto;
     min-width: 288px;
