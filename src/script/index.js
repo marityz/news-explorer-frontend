@@ -13,7 +13,7 @@ import FormPopup from "./FormPopup";
         wrongEmail: 'Здесь нужно указать email',
         wrongPassword: 'Поле пароль должно содержать более 8 символов'
     };
-    const textLoading = "Загрузка...";
+
     //открытие/закрытие меню на мелких разрешениях
     const mobileMenu = document.querySelector('.header-menu__nav-mobile');
     const toggleButtonMobileMenu = document.querySelector('.header-menu__nav-mobile-toggle-button');
@@ -24,7 +24,9 @@ import FormPopup from "./FormPopup";
     // все о попапе регистрации
     const popupRegistration = document.querySelector('.popup-reg');
     const openPopupRegistrationButton = document.querySelector('.header-menu__button');
+    const openPopupRegistrationButtonMobile = document.querySelector('.header-menu__button_mobile');
     const closePopupRegistrationButton = popupRegistration.querySelector('.popup__close');
+    const closePopupRegistrationButtonMobile = document.querySelector('.header-menu__nav-mobile-toggle-button');
     const formRegistration = document.forms.registr;
     const validFormRegistration = new FormValidator(formRegistration, errorMessages);
 
@@ -40,11 +42,18 @@ import FormPopup from "./FormPopup";
 
     togglePopupRegistration.setEventListeners();
 
+    const togglePopupRegistrationMobile = new Popup(popupRegistration, closePopupRegistrationButtonMobile, openPopupRegistrationButtonMobile, () => {
+        setSubmitButtonUnactive(formRegistration, validFormRegistration)
+    });
+
+    togglePopupRegistrationMobile.setEventListeners();
+
 
 //все о папапе авторизации
     const popupAuth = document.querySelector('.popup-auth');
     const openPopupAuth = popupRegistration.querySelector('.popup__form_auth-link');
     const closePopupAuth = popupAuth.querySelector('.popup__close');
+    const closePopupAuthMobile = document.querySelector('.header-menu__nav-mobile-toggle-button');
     const formAuth = document.forms.auth;
     const validFormAuth = new FormValidator(formAuth, errorMessages);
 
@@ -55,21 +64,17 @@ import FormPopup from "./FormPopup";
 
     togglePopupAuth.setEventListeners();
 
+    const togglePopupAuthMobile = new Popup(popupAuth, closePopupAuthMobile, openPopupAuth, () => {
+        togglePopupRegistration.close();
+    });
+
+    togglePopupAuthMobile.setEventListeners();
+
+
+    //флаг для необходимости авторизации для сохранения новости
+
+
 
 })();
 
 
-// function toggleMenuMobile(){
-//     if (openNavMobileMenu.classList.contains('header-menu__nav-mobile_open')) {
-//         openNavMobileMenu.classList.remove('header-menu__nav-mobile_open');
-//         toggleNavMobileButton.style.backgroundImage = "url(../images/menuicon-mobile-menu.svg)"
-//     } else {
-//         openNavMobileMenu.classList.add('header-menu__nav-mobile_open');
-//         toggleNavMobileButton.style.backgroundImage = "url(../images/header-close.svg)"
-//     }
-// }
-//
-//
-// toggleNavMobileButton.addEventListener('click', () => {
-//     toggleMenuMobile()
-// });

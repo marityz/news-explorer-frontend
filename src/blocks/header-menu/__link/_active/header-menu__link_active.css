@@ -1,5 +1,8 @@
 .header-menu__link_active {
     border-bottom: #FFFFFF solid 3px;
+    display: flex;
+    align-items: stretch;
+    align-content: stretch;
 }
 
 

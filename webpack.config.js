@@ -14,7 +14,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: '[name].[chunkhash].js'
+        filename: './script/[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -38,30 +38,27 @@ module.exports = {
             {
                 test: /\.css$/i,
                 use: [
-                    (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
-                    {
-                        loader:'css-loader',
-                        options: {
-                            importLoaders: 2
-                        }
-                    },
-                    'postcss-loader'
+                    isDev ? 'style-loader'
+                        : {
+                            loader: MiniCssExtractPlugin.loader,
+                            options: {
+                                publicPath: '../',
+                            },
+                        },
+                    'css-loader',
+                    'postcss-loader',
                 ],
-
-
             },
 
-            {
+            { // настройка image-webpack-loader
                 test: /\.(png|jpg|gif|ico|svg)$/,
                 use: [
-                    'file-loader?name=./images/[name].[ext]', // указали папку, куда складывать изображения
+                    'file-loader?name=./images/[name].[ext]',
                     {
                         loader: 'image-webpack-loader',
-                        options: {
-                            esModule: false,
-                        }
+                        options: {},
                     },
-                ]
+                ],
             },
             {
                 test: /\.(eot|woff|woff2)$/,
@@ -76,6 +73,18 @@ module.exports = {
         ]
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: 'pages/[name].[contenthash].css'
+        }),
+
+        new OptimizeCssAssetsPlugin({
+            assetNameRegExp: /\.css$/g,
+            cssProcessor: require('cssnano'),
+            cssProcessorPluginOptions: {
+                preset: ['default'],
+            },
+            canPrint: true
+        }),
 
         new HtmlWebpackPlugin({
             inject: false,
@@ -95,18 +104,6 @@ module.exports = {
 
         new WebpackMd5Hash(),
 
-        new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
-        }),
-
-        new OptimizeCssAssetsPlugin({
-            assetNameRegExp: /\.css$/g,
-            cssProcessor: require('cssnano'),
-            cssProcessorPluginOptions: {
-                preset: ['default'],
-            },
-            canPrint: true
-        }),
 
         new webpack.DefinePlugin({
             'NODE_ENV': JSON.stringify(process.env.NODE_ENV)

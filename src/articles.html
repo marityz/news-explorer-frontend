@@ -16,11 +16,15 @@
             <div class="logo logo_margin">
                 <h1 class="logo__text  logo__text_black">NewsExplorer</h1>
             </div>
-            <nav class="header-menu__nav">
-                <a class="header-menu__link  header-menu__link_black" href="#">Главная</a>
-                <a class="header-menu__link  header-menu__link_black header-menu__article header-menu__link_active-black"
-                   href="./articles.html">Сохранённые
-                    статьи</a>
+            <nav class="header-menu__nav-container">
+                <ul class="header-menu__nav">
+                    <li><a class="header-menu__link  header-menu__link_black" href="./index.html">Главная</a></li>
+                    <li>
+                        <a class="header-menu__link  header-menu__link_black header-menu__article header-menu__link_active-black"
+                           href="#">Сохранённые
+                            статьи</a></li>
+                </ul>
+
                 <button class="header-menu-auth__button  header-menu__button button">
                     <span class="header-menu-auth__user-name">Грета</span>
                     <img src="<%=require('./images/Union.svg').default%>" alt="кнопка выхода"
@@ -30,15 +34,20 @@
             <button class="header-menu__nav-mobile-toggle-button header-menu__nav-mobile-toggle-button_black">
             </button>
         </div>
-        <nav class="header-menu__nav-mobile">
-            <div class="header-menu__nav-mobile-content header-menu__nav-mobile-content_white">
-                <a class="header-menu__link header-menu__link_mobile header-menu__link_black" href="#">Главная</a>
-                <a class="header-menu__link header-menu__article header-menu__link_black" href="./articles.html">Сохранённые
-                    статьи</a>
-                <button class="header-menu__button button header-menu__button_mobile header-menu__button_black">Выход
-                </button>
-            </div>
-        </nav>
+
+<!--        <div class="header-menu__nav-mobile">-->
+<!--            <nav class="header-menu__nav-mobile-content header-menu__nav-mobile-content_white">-->
+<!--                <ul class="header-menu__nav-mobile-link">-->
+<!--                    <li><a class="header-menu__link header-menu__link_mobile header-menu__link_black"-->
+<!--                           href="#">Главная</a></li>-->
+<!--                    <li><a class="header-menu__link header-menu__article header-menu__link_black"-->
+<!--                           href="./articles.html">Сохранённые-->
+<!--                        статьи</a></li>-->
+<!--                </ul>-->
+<!--                <button class="header-menu__button button header-menu__button_mobile header-menu__button_black">Выход-->
+<!--                </button>-->
+<!--            </nav>-->
+<!--        </div>-->
         <div class="user-info user-info_margin">
             <p class="user-info__subtitle">Сохранённые статьи</p>
             <h1 class="user-info__title"><span class="user-info__title-name">Грета</span>, у вас

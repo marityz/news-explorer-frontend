@@ -17,23 +17,29 @@
             <div class="logo logo_margin">
                 <h1 class="logo__text">NewsExplorer</h1>
             </div>
-            <nav class="header-menu__nav">
-                <a class="header-menu__link header-menu__link_active" href="#">Главная</a>
-                <a class="header-menu__link header-menu__article  header-menu__article_nologin" href="./articles.html">Сохранённые
-                    статьи</a>
-                <button class="header-menu__button header-menu__auth button user-info__button">Регистрация</button>
+            <nav class = "header-menu__nav-container">
+            <ul class="header-menu__nav">
+                <li><a class="header-menu__link header-menu__link_active" href="#">Главная</a></li>
+                <li><a class="header-menu__link  header-menu__article_nologin"
+                       href="./articles.html">Сохранённые
+                    статьи</a></li>
+            </ul>
+            <button class="header-menu__button header-menu__auth button user-info__button">Регистрация</button>
             </nav>
             <button class="header-menu__nav-mobile-toggle-button">
             </button>
-        </div>
+
         <div class="header-menu__nav-mobile">
-            <div class="header-menu__nav-mobile-content">
-                <a class="header-menu__link header-menu__link_mobile" href="#">Главная</a>
-                <a class="header-menu__link header-menu__article header-menu__link_mobile" href="./articles.html">Сохранённые
-                    статьи</a>
+            <nav class="header-menu__nav-mobile-content">
+                <ul class = "header-menu__nav-mobile-link">
+                <li><a class="header-menu__link header-menu__link_mobile" href="#">Главная</a></li>
+                <li><a class="header-menu__link header-menu__article header-menu__link_mobile" href="./articles.html">Сохранённые
+                    статьи</a></li>
+                </ul>
                 <button class="header-menu__button header-menu__auth button header-menu__button_mobile">Регистрация
                 </button>
-            </div>
+            </nav>
+        </div>
         </div>
 
         <section class="search">
@@ -146,7 +152,7 @@
 
             <p class="popup__input-description popup__input-description_margin">Пароль</p>
             <input type="password" name="password" id="password" class="popup__input popup__input_type_link-url"
-                   placeholder="Введите пароль" minlength="2" required>
+                   placeholder="Введите пароль" minlength="8" required>
             <span class="text-error" id="password-error"></span>
 
             <button class="button popup__button popup__button_valid" name="button">Войти</button>

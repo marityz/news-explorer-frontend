@@ -1,22 +1,22 @@
 
 .header-menu__nav{
-    position: relative;
     list-style-type: none;
-    margin-right: 104px;
+    margin-top: 0px;
+    margin-bottom: 0px;
     display: flex;
     min-height: 80px;
+    height: 100%;
+
 }
 
 
 @media screen  and (min-width: 760px) and (max-width: 1023px){
     .header-menu__nav{
-        margin-right: 40px;
-        min-height: 63px;
     }
 }
 
 @media screen and (max-width: 759px){
     .header-menu__nav{
-        display: none;
+
     }
 }
