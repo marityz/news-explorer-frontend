@@ -1,0 +1,28 @@
+.about-author__text{
+    font-family: Roboto, Inter, sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0px;
+    text-align: left;
+    color: #1A1B22;
+    margin-top: 24px;
+    margin-bottom: 0px;
+
+}
+
+@media screen  and (min-width: 760px) and (max-width: 1023px){
+    .about-author__text{
+        margin-top: 0px;
+        margin-bottom: 24px;
+        font-weight: normal;
+    }
+}
+
+@media screen and (max-width: 759px){
+    .about-author__text{
+        margin-top: 0px;
+        margin-bottom: 22px;
+    }
+}

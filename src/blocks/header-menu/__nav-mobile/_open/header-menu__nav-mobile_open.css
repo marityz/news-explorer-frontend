@@ -1,0 +1,12 @@
+
+.header-menu__nav-mobile.header-menu__nav-mobile_open{
+ display: flex;
+ z-index: 2;
+}
+
+@media screen  and (min-width: 760px) {
+ .header-menu__nav-mobile.header-menu__nav-mobile_open{
+  display: none;
+ }
+}
+

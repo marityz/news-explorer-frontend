@@ -1,0 +1,16 @@
+.header-menu__button_mobile{
+    display: inline-block;
+    box-sizing: border-box;
+    border-radius: 0 0 100px 100px;
+    color: #FFFFFF;
+    margin: 22px auto 0 0;
+    min-width: 288px;
+
+}
+
+@media screen  and (min-width: 760px){
+    .header-menu__nav-mobile{
+        display: none;
+    }
+
+}

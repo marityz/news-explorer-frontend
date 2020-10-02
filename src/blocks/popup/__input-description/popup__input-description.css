@@ -1,0 +1,13 @@
+@import url('./_margin/popup__input-description_margin.css');
+
+.popup__input-description{
+    font-family: Inter, sans-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #2F71E5;
+
+}

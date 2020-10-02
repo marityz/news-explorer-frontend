@@ -1,0 +1,29 @@
+@import url('./_margin/popup__content_margin.css');
+@import url('./_padding/popup__content_padding.css');
+
+
+.popup__content {
+  box-sizing: border-box;
+  width: 430px;
+  min-height: 182px;
+  background-color: #fff;
+  border-radius: 16px;
+  position: relative;
+
+}
+
+/*@media screen and (max-width: 540px) {*/
+/*  .popup__content {*/
+/*    width: calc(100% - 60px);*/
+/*  }*/
+/*}*/
+
+@media screen and (max-width: 538px){
+  .popup__content {
+    width: 100%;
+    height: calc(100vh - 56px);
+    border-radius: 16px 16px 0 0 ;
+  }
+}
+
+

@@ -1,0 +1,35 @@
+.results-card__flag{
+    position: absolute;
+    background-image: url("../../../images/rectangle.png");
+    z-index: 2;
+    right: 24px;
+    top: 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.results-card__flag:hover{
+    cursor: pointer;
+    background-image: url("../../../images/flag-black.svg");
+
+}
+
+
+@media screen  and (min-width: 760px) and (max-width: 1023px){
+    .results-card__flag{
+        right: 8px;
+        top: 8px;
+    }
+}
+
+@media screen and (max-width: 759px){
+    .results-card__flag{
+        right: 16px;
+        top: 16px;
+    }
+
+}

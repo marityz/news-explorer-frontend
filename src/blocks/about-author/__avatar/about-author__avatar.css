@@ -1,0 +1,23 @@
+.about-author__avatar{
+
+}
+
+
+
+@media screen  and (min-width: 760px) and (max-width: 1023px){
+    .about-author__avatar{
+        height: 232px;
+        width: 232px;
+        margin-top: 21px;
+
+    }
+}
+
+
+@media screen and (max-width: 759px){
+    .about-author__avatar{
+        min-height: 272px;
+        width: 272px;
+        margin: auto;
+    }
+}

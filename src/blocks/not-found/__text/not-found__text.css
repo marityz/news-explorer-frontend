@@ -1,0 +1,10 @@
+.not-found__text {
+    font-family: Roboto Slab, Inter,sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 30px;
+    margin: auto auto 16px auto;
+    text-align: center;
+    color: #1A1B22;
+}
