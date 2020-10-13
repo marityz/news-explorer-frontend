@@ -3,6 +3,7 @@
 @import url('__button/result__button.css');
 @import url('./_margin/result_margin.css');
 @import url('./_margin-articles/result_margin-articles.css');
+@import url('./_displaynone/result_displaynone.css');
 
 
 
@@ -12,5 +13,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 auto 0 auto;
 }
 

@@ -1,6 +1,7 @@
 @import url(./__img/not-found__img.css);
 @import url(./__text/not-found__text.css);
 @import url(./__subtext/not-found__subtext.css);
+@import url(./_activ/not-found_activ.css);
 
 
 
@@ -11,4 +12,5 @@
 	max-height: 374px;
 	margin: auto;
     padding-top: 80px;
+	padding-bottom: 80px;
 }

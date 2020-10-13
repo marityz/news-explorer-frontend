@@ -14,7 +14,7 @@
 
 .results-card__flag:hover{
     cursor: pointer;
-    background-image: url("../../../images/flag-black.svg");
+    background-image: url("../../../images/save.svg");
 
 }
 

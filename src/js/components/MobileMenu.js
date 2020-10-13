@@ -5,11 +5,11 @@ export default class MobileMenu {
     }
 
     setEventListeners = () => {
-        this.toggleButton.addEventListener('click', this._toggle);
+        this.toggleButton.addEventListener('click', this.toggle);
 
     };
 
-    _toggle = () => {
+    toggle = () => {
         if (this.menu.classList.contains('header-menu__nav-mobile_open')) {
             this.menu.classList.remove('header-menu__nav-mobile_open');
             this.toggleButton.style.backgroundImage = "url(../images/menuicon-mobile-menu.svg)"

@@ -1,9 +1,12 @@
+import REG_EXP_EMAIL from "../constants/regExpEmail"
+
 export default class FormValidator {
     constructor(element, errorMessages) {
         this.element = element;
         this.errorMessages = errorMessages;
-
         this._init();
+
+
     }
 
     _isValidate = (input) => {
@@ -32,25 +35,24 @@ export default class FormValidator {
 
         return input.checkValidity();
     };
-
+//нахождение полей ошибок
     _findErrorElement = (input) => {
         const errorElem = this.errorElems.find((element) => {
             return element.id === `${input.id}-error`;
         });
         return errorElem;
     };
-
+//валидация email
     _isValidEmail = (input) => {
-        const regExp = /^(([a-zA-Z0-9])((([a-zA-Z0-9])*([-_]{1}))?[^_\-\#\.\,\!\$\%\^\&\*\(\)\/\\\|\s\@\?\'\]\[\}\;\>\<\:])?)+@(((([a-z])*([-_]{1})?)[^_\-\#\.\,\!\$\%\^\&\*\(\)\/\\\|\s\@\?\'\]\[\}\;\>\<\:]))+(((\.[a-z]{2,}))+)$/;
-        return regExp.test(input);
+        return REG_EXP_EMAIL.test(input);
     };
-
+//очистка ошибок
     resetErrorForm = () => {
         this.inputs.forEach((input) => {
             this._findErrorElement(input).textContent = "";
         });
     };
-
+    //валидация одного инпута
     _checkInputValidity = (input) => {
         const errorElem = this._findErrorElement(input);
 
@@ -83,6 +85,8 @@ export default class FormValidator {
         this._setEventListeners();
     };
 
+
+    //валидация всей формы
     _handlerInputForm = (event) => {
         const input = event.target;
 
@@ -92,6 +96,7 @@ export default class FormValidator {
             return this._isValidate(input);
         });
 
+
         this.setSubmitButtonState(isValidInputs);
 
     };
@@ -99,6 +104,7 @@ export default class FormValidator {
 
     _setEventListeners = () => {
         this.element.addEventListener("input", this._handlerInputForm);
-    }
+    };
+
 
 }

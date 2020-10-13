@@ -1,5 +1,5 @@
-import './../pages/articles.css';
-import MobileMenu from "./MobileMenu";
+import './articles.css';
+import MobileMenu from "../../js/components/MobileMenu";
 
 (function () {
     const mobileMenu = document.querySelector('.header-menu__nav-mobile');

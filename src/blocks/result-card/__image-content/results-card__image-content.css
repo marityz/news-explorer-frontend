@@ -1,5 +1,13 @@
 .results-card__image-content{
     width: 100%;
+    height: 100%;
     position: relative;
+    box-sizing: border-box;
     border-radius: 16px 16px 0 0 ;
+    background-image: url("../../../images/notimg.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
+
+
