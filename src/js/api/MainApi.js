@@ -59,13 +59,37 @@ export default class MainApi {
             .then((res) => this._returnJson(res));
     };
 
-        _returnJson = (res) => {
-            if (!res.ok) {
-                return Promise.resolve(res.json());
-            }
-            return res.json();
+
+    deleteCard = (id) => {
+        return fetch(`${this.url}/articles/${id}`, {
+            method: "DELETE",
+            credentials: "include",
+            headers: this.headers,
+            body: JSON.stringify({
+                id: id,
+            }),
+        })
+            .then((res) => this._returnJson(res))
+
+    };
+
+
+    // getUserData = () => {
+    //     return fetch(`${this.url}/users/me`, {
+    //         method: "GET",
+    //         credentials: "include",
+    //     })
+    //         .then((res) => this._returnJson(res));
+    //
+    // };
+
+
+    _returnJson = (res) => {
+        if (!res.ok) {
+            return Promise.resolve(res.json());
         }
-
-
-
+        return res.json();
     }
+
+
+}

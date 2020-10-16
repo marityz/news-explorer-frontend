@@ -1,6 +1,6 @@
 .search__form{
- display: flex;
-
+    display: flex;
+    margin-bottom: -40px;
 
 }
 
@@ -16,5 +16,6 @@
     .search__form{
         flex-wrap: wrap;
         flex-direction: column;
+        margin-bottom: -125px;
     }
 }

@@ -21,8 +21,11 @@ const defaultDataNewsApi = {
     apiKey: 'd3848ea6d4654c90be9e1e1a22f6c998',
 };
 
+const notImgCard = "https://fixim.ru/image/question/75/523_5b176e8c.jpg";
+
 export {
     PROPS,
     defaultDataMainApi,
-    defaultDataNewsApi
+    defaultDataNewsApi,
+    notImgCard
 }

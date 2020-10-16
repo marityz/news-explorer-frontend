@@ -21,13 +21,13 @@
                 <ul class="header-menu__nav">
                     <li><a class="header-menu__link  header-menu__link_black" href="./index.html">Главная</a></li>
                     <li>
-                        <a class="header-menu__link  header-menu__link_black header-menu__article header-menu__link_active-black"
+                        <a class="header-menu__link  header-menu__link_black header-menu__article header-menu__link_active-black header-menu__link-article"
                            href="#">Сохранённые
                             статьи</a></li>
                 </ul>
 
                 <button class="header-menu-auth__button  header-menu__button button">
-                    <span class="header-menu-auth__user-name">Грета</span>
+                    <span class="header-menu-auth__user-name header-menu-auth__user-name_black"></span>
                     <img src="<%=require('../../images/Union.svg').default%>" alt="кнопка выхода"
                          class="header-menu-auth__logout">
                 </button>
@@ -36,30 +36,55 @@
             </button>
         </div>
 
-<!--        <div class="header-menu__nav-mobile">-->
-<!--            <nav class="header-menu__nav-mobile-content header-menu__nav-mobile-content_white">-->
-<!--                <ul class="header-menu__nav-mobile-link">-->
-<!--                    <li><a class="header-menu__link header-menu__link_mobile header-menu__link_black"-->
-<!--                           href="#">Главная</a></li>-->
-<!--                    <li><a class="header-menu__link header-menu__article header-menu__link_black"-->
-<!--                           href="./articles.html">Сохранённые-->
-<!--                        статьи</a></li>-->
-<!--                </ul>-->
-<!--                <button class="header-menu__button button header-menu__button_mobile header-menu__button_black">Выход-->
-<!--                </button>-->
-<!--            </nav>-->
-<!--        </div>-->
-        <div class="user-info user-info_margin">
-            <p class="user-info__subtitle">Сохранённые статьи</p>
-            <h1 class="user-info__title"><span class="user-info__title-name">Грета</span>, у вас
-                <span class="user-info__num">5</span> сохранённых статей</h1>
-            <p class="user-info__text">По ключевым словам: <span
-                    class="user-info__tag">Природа, Тайга</span> и <span class="user-info__numtag">2</span> другим
-            </p>
-
+        <div class="header-menu__nav-mobile">
+            <nav class="header-menu__nav-mobile-content header-menu__nav-mobile-content_white">
+                <ul class="header-menu__nav-mobile-link">
+                    <li><a class="header-menu__link header-menu__link_mobile header-menu__link_black"
+                           href="./index.html">Главная</a></li>
+                    <li><a class="header-menu__link header-menu__article header-menu__link_black"
+                           href="./articles.html">Сохранённые
+                        статьи</a></li>
+                </ul>
+                <button class="header-menu__button button header-menu__button_mobile header-menu__button_black">Выход
+                </button>
+            </nav>
         </div>
+        <template id="user-info">
+            <div class="user-info user-info_margin">
+                <p class="user-info__subtitle">Сохранённые статьи</p>
+                <h1 class="user-info__title"><span class="user-info__title-name"></span>, у вас
+                    <span class="user-info__num"></span> сохранённых статей</h1>
+                <p class="user-info__text">По ключевым словам: <span
+                        class="user-info__tag"></span><span class="user-info__number"> и <span
+                        class="user-info__numtag">2</span> другим
+                </span></p>
 
+            </div>
+
+        </template>
     </header>
+
+    <section class="result  result_margin-articles">
+        <div class="result__cards">
+            <template id="result-card-articles">
+                <div class="result-card">
+                    <div class="results-card__image">
+                        <img class="results-card__image-content" src="">
+                        <div class="results-card__log-in results-card__log-in_notdisplay">Убрать из сохранённых
+                        </div>
+                        <div class="results-card__label results-card__label_none">Природа</div>
+                        <div class=" results-card__flag results-card__icondelete"></div>
+                    </div>
+                    <span class="results-card__date">2 августа, 2019</span>
+                    <h3 class="results-card__title">Национальное достояние – парки</h3>
+                    <p class="results-card__text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала
+                        складываться система национальных парков – охраняемых территорий, где и сегодня каждый может
+                        приобщиться к природе.</p>
+                    <a class="results-card__source link" href="lenta.ru" target="_blank">ДЗЕН</a>
+                </div>
+            </template>
+        </div>
+    </section>
     <section class="preloader">
         <i class="preloader__circle"></i>
         <h3 class="preloader__text">Идет поиск новостей...</h3>
@@ -67,9 +92,8 @@
     <section class="not-found">
         <img class="not-found__img" src="<%=require('../../images/not-found.svg').default%>"
              alt="изображение секции не найдено">
-        <h2 class="not-found__text">Ничего не найдено</h2>
-        <p class="not-found__subtext">К сожалению по вашему запросу
-            ничего не найдено.</p>
+        <h2 class="not-found__text">Нет сохраненных новостей</h2>
+        <p class="not-found__subtext"></p>
     </section>
     <section class="result  result_margin-articles">
         <div class="result__cards">

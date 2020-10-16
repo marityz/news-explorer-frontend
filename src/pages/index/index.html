@@ -61,14 +61,14 @@
             <h2 class="search__title">Что в мире творится?</h2>
             <p class="search__text">Находите самые свежие статьи на любую тему и сохраняйте в своём личном
                 кабинете.</p>
+
             <form class="search__form" name="newsearch">
 
                 <input id="inputtag" type="text" name="tag" class="search__input"
                        placeholder="Введите тему новости">
-
                 <button type="submit" class="button search__button">Искать</button>
             </form>
-
+            <span class="search-error search-error_none">Необходимо ввести запрос</span>
         </section>
 
     </header>
@@ -87,6 +87,7 @@
                         <div class="results-card__log-in results-card__log-in_notdisplay">Войдите, чтобы сохранять
                             статьи
                         </div>
+                        <div class="results-card__label results-card__label_none"></div>
                         <div class="results-card__flag"></div>
                     </div>
                     <span class="results-card__date"></span>

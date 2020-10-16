@@ -9,6 +9,30 @@
     max-width: 608px;
 }
 
+.search-error{
+    position: relative;
+    background: #FFFFFF;
+    padding: 5px;
+    border-radius: 8px;
+    margin: 0px auto 0 18px;
+    width: max-content;
+    font-family: Inter,Arial,sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #FF0000;
+    z-index: 2;
+}
+
+
+.search-error.search-error_none{
+    display: none;
+}
+
+
 
 
 @media screen  and (min-width: 760px) and (max-width: 1023px){
@@ -25,5 +49,12 @@
         margin: 30px auto 0px auto;
 
     }
+    .search-error{
+        display: block;
+        max-width: 250px;
+        width: 100%;
+        margin:  0 auto 0 auto;
+    }
 }
+
 

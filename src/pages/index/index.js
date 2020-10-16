@@ -10,7 +10,7 @@ import NewsApi from "../../js/api/NewsApi";
 import NewsCard from "../../js/components/NewsCard";
 import NewsCardList from "../../js/components/NewsCardList";
 
-import {PROPS, defaultDataMainApi, defaultDataNewsApi} from "../../js/constants/constans";
+import {PROPS, defaultDataMainApi, defaultDataNewsApi, notImgCard} from "../../js/constants/constans";
 import {
     header,
     headerMenu,
@@ -189,12 +189,19 @@ import {
 
 
     // работа над отрисовкой карточки
+    const showLabel = false;
     const apiNewsCard = new NewsApi(defaultDataNewsApi);
     const CardList = new NewsCardList(containerCards, apiNewsCard, errorResultCards);
 
     function drawCard(obj, searchText) {
+       if( obj.urlToImage === null){
+           obj.urlToImage = notImgCard;
+       }
+        if( obj.description === null){
+            obj.description = "  ";
+        }
 
-        const card = {
+       const card = {
             keyword: searchText,
             title: obj.title,
             link: obj.url,
@@ -203,10 +210,12 @@ import {
             source: obj.source.name,
             image: obj.urlToImage,
         };
-        const newsCard = new NewsCard(card, templateCard, mainApi);
+        const newsCard = new NewsCard(card, templateCard, mainApi, showLabel);
         return newsCard.createCard();
     }
 
+
+    const errorElementInputSearch = document.querySelector(".search-error");
 
     formNewsSearch.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -214,11 +223,13 @@ import {
         CardList.clearServerError();
         buttonForAddingNews.classList.remove("result__button_none");
         const searchText = event.target.elements.tag.value;
-
-
         //первая страница при загрузке
         const frontPage = 1;
-        if (searchText.length != 0) {
+        if(searchText.length === 0){
+                errorElementInputSearch.classList.remove('search-error_none');
+                setTimeout(()=>{errorElementInputSearch.classList.add('search-error_none')}, 1000);
+        }
+        else {
             CardList.setInputTextSearch(searchText);
             renderPreloader(true);
             apiNewsCard.getArticles(searchText, formatDate(today), formatDate(weekBefore), frontPage)
@@ -263,8 +274,6 @@ import {
                 .finally(() => {
                     renderPreloader(false);
                 })
-        } else {
-
         }
     });
 

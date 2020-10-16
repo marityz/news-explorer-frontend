@@ -40,6 +40,7 @@ const templateCard = document.querySelector('#card').content;
 const formNewsSearch = document.forms.newsearch;
 const buttonForAddingNews = document.querySelector(".result__button");
 
+
 export {
     header,
     headerMenu,

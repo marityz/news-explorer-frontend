@@ -1,7 +1,7 @@
 import {formatDate, today, weekBefore} from "../utils/time-utils";
 
 export default class NewsCardList {
-    constructor(parent, api, error) {
+    constructor(parent, api, error = null) {
         this.api = api;
         this.parent = parent;
         this.count = 2;

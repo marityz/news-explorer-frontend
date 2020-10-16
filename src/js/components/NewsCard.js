@@ -1,21 +1,18 @@
-//
-const iconSave = require("../../images/save.svg");
-const iconDelete = require("../../images/trash.svg");
-const blueIconSave = require("../../images/bookmark.svg");
 
 export default class NewsCard {
-    constructor(data, template, api) {
-
+    constructor(data, template, api, showLabel) {
         this.data = data;
         this.keyword = data.keyword;
         this.title = data.title;
         this.text = data.text;
-        this.time = this._formatDate(this.data.publishedAt || this.data.date);
+        this.time = this._formatDate(this.data.date);
         this.source = data.source;
         this.link = data.link;
         this.image = data.image;
         this.template = template;
         this.api = api;
+        this.showLabel = showLabel;
+        console.log(this.showLabel);
     }
 
     createCard = () => {
@@ -28,14 +25,19 @@ export default class NewsCard {
         this.timeCard = this.card.querySelector(".results-card__date");
         this.flag = this.card.querySelector(".results-card__flag");
         this.flagNotSaveText = this.card.querySelector(".results-card__log-in");
+        this.label = this.card.querySelector(".results-card__label");
 
         //действия для создания карточки
+        if(this.showLabel && localStorage.getItem("isLoggedIn") === "true"){
+            this.label.textContent = this.data.keyword;
+            this.label.classList.remove("results-card__label_none");
+        }
         this.titleCard.textContent = this.title;
         this.textCard.textContent = this.text;
         this.sourceCard.textContent = this.source;
         this.sourceCard.setAttribute("href", this.link);
         this.timeCard.textContent = this.time;
-        this.imgCard.setAttribute("src", this.image);
+        this.imgCard.setAttribute("src",  this.image);
         this._renderIconLogIn();
         this._setEventListeners();
         return this.card;
@@ -43,7 +45,18 @@ export default class NewsCard {
 
     _setEventListeners = () => {
         this.flag.addEventListener("mouseover", this._renderIcon);
-        this.flag.addEventListener("click", this._saveCard);
+        this.card.addEventListener("click", this._eventListenerClick);
+
+    };
+
+    _eventListenerClick = (event) => {
+        if (event.target === this.flag && localStorage.getItem("isLoggedIn") === "true") {
+            this._saveAndDeleteCard();
+        } else {
+            window.open(this.link);
+        }
+
+
     };
 
     _formatDate = (dateString) => {
@@ -54,54 +67,81 @@ export default class NewsCard {
         })}, ${date.getFullYear()}`;
     };
 
-
-
-
-
     _renderIcon = () => {
-        if(localStorage.getItem("isLoggedIn") === "false"){
-            console.log("хуй");
+        if (localStorage.getItem("isLoggedIn") === "false") {
             this._renderIconNotSaveText();
             setTimeout(this._hideIconNotSaveText, 800);
+
         } else {
+
 
         }
 
     };
 
     _renderIconLogIn = () => {
-        if(localStorage.getItem("isLoggedIn") === "true"){
+        if (localStorage.getItem("isLoggedIn") === "true") {
             this.api.getArticles()
                 .then((res) => {
-                    res.forEach((card) => {
-                        if(card.link === this.link && card.date === this.time){
-                            this.flag.style.backgroundImage = "url(../../images/bookmark.svg)"
-                        } else {
+                    if (res.length === 0) {
 
-                        }
-                    })
+                    } else {
+                        res.forEach((card) => {
+                            if (card.link === this.link && card.date === this.time) {
+                                this._id = card._id;
+                                this.flag.classList.add('results-card__flag_save');
+                            } else {
+
+                            }
+                        })
+
+                    }
+
+                })
+                .catch((err) =>{
+                    console.log(err)
                 })
 
         }
     };
 
-    _saveCard = () => {
-       // if() {
-            const obj = {
-                keyword: this.keyword,
-                title: this.title,
-                text: this.text,
-                date: this.time,
-                source: this.source,
-                link: this.link,
-                image: this.image,
-            };
+    _saveAndDeleteCard = () => {
+        if (this.flag.classList.contains("results-card__flag_save")) {
+            this._deleteCard();
+        } else {
+            this._saveCard()
+        }
+    };
 
-            this.api.createArticle(obj)
-                .then((res) => {
-                    this.flag.style.backgroundImage = "url(../../images/bookmark.svg)"
-                })
-       // }
+
+    _saveCard = () => {
+        const obj = {
+            keyword: this.keyword,
+            title: this.title,
+            text: this.text,
+            date: this.time,
+            source: this.source,
+            link: this.link,
+            image: this.image,
+        };
+
+        this.api.createArticle(obj)
+            .then((res) => {
+                this._id = res.data._id;
+                this.flag.classList.add('results-card__flag_save');
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+
+    };
+
+    _deleteCard = () => {
+        this.api.deleteCard(this._id)
+            .then((res) => {
+                this.flag.classList.remove('results-card__flag_save');
+                console.log(res)
+            })
 
     };
 

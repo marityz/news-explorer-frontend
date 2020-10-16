@@ -4,7 +4,8 @@
     position: relative;
     box-sizing: border-box;
     border-radius: 16px 16px 0 0 ;
-    background-image: url("../../../images/notimg.png");
+    background-color: #222b30;
+    /*background-image: url("../../../images/notimg.png");*/
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;

@@ -10,6 +10,7 @@
     border-radius: 100px;
     padding-left: 24px;
     margin-right: -168px;
+
 }
 
 .search__input:active,
@@ -17,6 +18,8 @@
 .search__input:focus {
     outline: none;
 }
+
+
 
 
 @media screen and (max-width: 759px) {
@@ -28,3 +31,5 @@
         flex-grow: 3;
     }
 }
+
+

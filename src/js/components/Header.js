@@ -2,7 +2,7 @@ export default class Header {
     constructor(parents, menu) {
         this.parents = parents;
         this.menu = menu;
-        this.linkArticle = this.menu.querySelector('.header-menu__link-article');
+        this.linkArticle = this.menu.querySelector('.header-menu__link-article')||null;
         this.text = this.menu.querySelector('.header-menu-auth__user-name');
         this.imgExit = this.menu.querySelector('.header-menu-auth__logout');
     }
@@ -11,10 +11,11 @@ export default class Header {
     //отрисовка разметки
     render = (props) => {
         //если  залогинен
-        if (!props.isLoginIn) {
+        console.log(props);
+        if (!props.isLoginIn || true) {
             this.linkArticle.classList.remove('header-menu__article_nologin');
             this.imgExit.classList.remove('header-menu-auth__logout_none');
-            this.text.textContent = props.name;
+            this.text.textContent = localStorage.getItem("username");
         }
         // не залогинен
          else {
