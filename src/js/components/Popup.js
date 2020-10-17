@@ -1,8 +1,7 @@
 export default class Popup {
-    constructor(modalWindow, closePopupButton, onOpenCallback) {
+    constructor(modalWindow, closePopupButton, onOpenCallback = null) {
         this.modalWindow = modalWindow;
         this.closePopupButton = closePopupButton;
-
         this.onOpenCallback = onOpenCallback;
     }
 
@@ -29,7 +28,17 @@ export default class Popup {
         document.removeEventListener('keyup', this._handleEscClose);
         document.removeEventListener('mousedown', this._closePopupMousedown);
     };
+    openError = () => {
+        this.modalWindow.classList.add("popup_is-opened");
+        document.addEventListener('keyup', this._handleEscClose);
+        document.addEventListener('mousedown', this._closePopupMousedown);
+    };
 
+
+     setErrorText =(text)=>{
+         this.modalWindow.querySelector("popup-err__text").textContent = text;
+
+     };
     //закрытие по ESC
     _handleEscClose = (event) => {
         if (event.keyCode === 27) {

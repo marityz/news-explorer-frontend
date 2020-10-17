@@ -1,11 +1,11 @@
 import {formatDate, today, weekBefore} from "../utils/time-utils";
+import FORM_ERRORS from "../constants/errorMessages";
 
 export default class NewsCardList {
-    constructor(parent, api, error = null) {
+    constructor(parent, api) {
         this.api = api;
         this.parent = parent;
         this.count = 2;
-        this.error = error;
     }
 
     addCard = (card) => {
@@ -18,7 +18,7 @@ export default class NewsCardList {
         });
     };
 
-    showMore = (drawCard, button) => {
+    showMore = (drawCard, button, errorPopup) => {
         this.api.getArticles(this.getInputTextSearch(), formatDate(today), formatDate(weekBefore), this.count)
             .then((res) => {
                 if (res.articles.length < 3) {
@@ -38,10 +38,11 @@ export default class NewsCardList {
             .then(() => {
                 this.count = this.count + 1;
             })
+
             .catch((err) => {
                 console.log(err);
-                this.setServerError();
-
+                textErrorPopup.textContent = FORM_ERRORS.errorMessages.resultError;
+                errorPopup.openError()
             })
 
 
@@ -61,13 +62,6 @@ export default class NewsCardList {
     };
 
 
-    setServerError = () => {
-        this.error.classList.add("result-error_activ");
-    };
-
-    clearServerError = () => {
-        this.error.classList.remove("result-error_activ");
-    };
 
 
 }

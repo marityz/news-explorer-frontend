@@ -9,76 +9,93 @@ import MainApi from "../../js/api/MainApi";
 import {defaultDataMainApi} from "../../js/constants/constans";
 import ArticlesCard from "../../js/components/ArticlesCard";
 import NewsCardList from "../../js/components/NewsCardList";
+import Popup from "../../js/components/Popup";
+import FORM_ERRORS from "../../js/constants/errorMessages";
+
+import {
+    mobileMenu,
+    toggleButtonMobileMenu,
+    buttonExitMobile,
+    windowErrorPopup,
+    closePopupErrorButton,
+    textErrorPopup,
+    header,
+    headerMenu,
+    containerCards,
+    buttonLogOut
+} from "../../js/constants/constants-dom-elem"
 
 
-const mobileMenu = document.querySelector('.header-menu__nav-mobile');
-const toggleButtonMobileMenu = document.querySelector('.header-menu__nav-mobile-toggle-button');
-const buttonExitMobile = document.querySelector(".header-menu__button_mobile");
+(function () {
+    const showLabelCard = true;
+    //все темплейты
+    const templateCardArticles = document.querySelector("#result-card-articles").content;
+    const templateUserInfo = document.querySelector("#user-info").content;
 
-const toggleMobileMenu = new MobileMenu(mobileMenu, toggleButtonMobileMenu);
-toggleMobileMenu.setEventListeners();
+    //объекты
+    const toggleMobileMenu = new MobileMenu(mobileMenu, toggleButtonMobileMenu, showLabelCard);
+    toggleMobileMenu.setEventListeners();
 
+    const errorPopup = new Popup(windowErrorPopup, closePopupErrorButton, null);
+    errorPopup.setEventListeners();
 
-const header = document.querySelector(".header");
-const headerMenu = document.querySelector(".header-menu");
-
-
-const headerArticles = new Header(header, headerMenu);
-headerArticles.render(true);
-const buttonLogOut = document.querySelector(".header-menu__button");
-buttonLogOut.addEventListener("click", () => {
-    headerArticles.logOut();
-    document.location.href = "./index.html";
-});
+    const headerArticles = new Header(header, headerMenu);
+    headerArticles.render(true);
 
 
-const api = new MainApi(defaultDataMainApi);
+    const api = new MainApi(defaultDataMainApi);
 
-const templateUserInfo = document.querySelector("#user-info").content;
+    const userInfo = new UserInfo(header, templateUserInfo, api);
 
-const userInfo = new UserInfo(header, templateUserInfo, api);
+    userInfo.getUserData();
 
-userInfo.getUserData();
+    const cardList = new NewsCardList(containerCards, api, null);
 
-const templateCardArticles = document.querySelector("#result-card-articles").content;
-const containerCard = document.querySelector(".result__cards");
+    //слушатели
 
+    buttonLogOut.addEventListener("click", () => {
+        headerArticles.logOut();
+        document.location.href = "./index.html";
+    });
 
-const cardList = new NewsCardList(containerCard, api, null);
-const showLabel = true;
-
-
-
-function drawCard(obj) {
-
-    const card = {
-        id: obj._id,
-        keyword: obj.keyword,
-        title: obj.title,
-        link: obj.link,
-        text: obj.text,
-        date: obj.date,
-        source: obj.source,
-        image: obj.image,
-    };
-    const newsCard = new ArticlesCard(card, templateCardArticles, api, showLabel);
-    return newsCard.createCard();
-}
-
-
-api.getArticles()
-    .then((res) => {
-        const cards = res.map((card) => {
-            return drawCard(card);
-        });
-        cardList.renderResults(cards);
-    })
-    .catch((err) => {
-        console.log(err)
+    buttonExitMobile.addEventListener("click", () => {
+        headerArticles.logOut();
     });
 
 
-const arr  = ["Огонь", "Погода", "Огонь", "Огонь","Погода","Просто"];
-//нужно получить
-//arr = {"Огонь" - 3, "Погода" - 2, "Просто" -1}
+
+
+
+    function drawCard(obj) {
+
+        const card = {
+            id: obj._id,
+            keyword: obj.keyword,
+            title: obj.title,
+            link: obj.link,
+            text: obj.text,
+            date: obj.date,
+            source: obj.source,
+            image: obj.image,
+        };
+        const newsCard = new ArticlesCard(card, templateCardArticles, api, showLabelCard);
+        return newsCard.createCard();
+    }
+
+
+    api.getArticles()
+        .then((res) => {
+            const cards = res.map((card) => {
+                return drawCard(card);
+            });
+            cardList.renderResults(cards);
+        })
+        .catch((err) => {
+            console.log(err);
+            textErrorPopup.textContent = FORM_ERRORS.errorMessages.resultError;
+            errorPopup.openError();
+        });
+
+})();
+
 

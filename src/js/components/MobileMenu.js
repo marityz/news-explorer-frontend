@@ -1,7 +1,9 @@
+
 export default class MobileMenu {
-    constructor(menu, toggleButton) {
+    constructor(menu, toggleButton, isColor) {
         this.menu = menu;
         this.toggleButton = toggleButton;
+        this.color = isColor;
     }
 
     setEventListeners = () => {
@@ -12,10 +14,17 @@ export default class MobileMenu {
     toggle = () => {
         if (this.menu.classList.contains('header-menu__nav-mobile_open')) {
             this.menu.classList.remove('header-menu__nav-mobile_open');
-            this.toggleButton.style.backgroundImage = "url(../images/menuicon-mobile-menu.svg)"
+
+            if (this.color) {
+                this.toggleButton.style.backgroundImage = "url(../images/menu-mobile-black.svg)";
+            } else {
+                this.toggleButton.style.backgroundImage = "url(../images/menuicon-mobile-menu.svg)";
+            }
+
         } else {
             this.menu.classList.add('header-menu__nav-mobile_open');
-            this.toggleButton.style.backgroundImage = "url(../images/header-close.svg)"
+            this.toggleButton.style.backgroundImage = "url(../images/header-close.svg)";
+
         }
     }
 

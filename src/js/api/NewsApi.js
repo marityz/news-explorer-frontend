@@ -3,9 +3,9 @@ export default class NewsApi {
         this.options = options;
     }
 
-    getArticles(text, startdate, todate,page) {
-        return fetch(`${this.options.baseUrl}?q=${text}&from=${startdate}&to=${todate}&sortBy=popularity&page=${page}&pageSize=3&apiKey=${this.options.apiKey}`, {
-               method: 'GET',
+    getArticles(text, startdate, todate, page) {
+        return fetch(`${this.options.baseUrl}?q=${text}&from=${startdate}&to=${todate}&page=${page}&pageSize=3&apiKey=${this.options.apiKey}`, {
+            method: 'GET',
 
         })
 

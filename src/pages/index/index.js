@@ -12,11 +12,19 @@ import NewsCardList from "../../js/components/NewsCardList";
 
 import {PROPS, defaultDataMainApi, defaultDataNewsApi, notImgCard} from "../../js/constants/constans";
 import {
-    header,
-    headerMenu,
     mobileMenu,
     toggleButtonMobileMenu,
-    buttonOpenAuthorizationPopupMobile,
+    buttonExitMobile,
+    windowErrorPopup,
+    closePopupErrorButton,
+    textErrorPopup,
+    header,
+    headerMenu,
+    containerCards,
+} from "../../js/constants/constants-dom-elem"
+
+
+import {
     modalWindowAuthorization,
     buttonCloseAuthorizationPopup,
     buttonOpenAuthorizationPopup,
@@ -29,12 +37,15 @@ import {
     buttonClosePopupSuccess,
     linkOpenPopupAuthorization,
     formRegistration,
-    errorResultCards,
-    containerCards,
     templateCard,
     formNewsSearch,
     buttonForAddingNews,
+    errorElementInputSearch
+
 } from "../../js/constants/constans-dom-elem-index";
+
+
+
 import {
     today,
     weekBefore,
@@ -43,10 +54,24 @@ import {
 
 import {
     renderPreloader,
-    renderNotFound
+    renderNotFound,
 } from "../../js/utils/function-utils"
 
 (function () {
+
+    const showLabelCard = false;
+
+    //объекты
+
+    const errorPopup = new Popup(windowErrorPopup, closePopupErrorButton);
+    errorPopup.setEventListeners();
+
+    const headerMenuNotLogin = new Header(header, headerMenu);
+    const headerMenuMobileNotLogin = new Header(header, mobileMenu);
+
+
+    const toggleMobileMenu = new MobileMenu(mobileMenu, toggleButtonMobileMenu, showLabelCard);
+    toggleMobileMenu.setEventListeners();
 
 
     function checkForLogin(event) {
@@ -61,18 +86,12 @@ import {
     }
 
 
-//объекты меню
-    const headerMenuNotLogin = new Header(header, headerMenu);
-    const headerMenuMobileNotLogin = new Header(header, mobileMenu);
 
-//проверка на логин
+    //проверка на логин
     localStorage.getItem("username") ? headerMenuNotLogin.getAuthContent() : 0;
     localStorage.getItem("username") ? headerMenuMobileNotLogin.getAuthContent() : 0;
-    //работа с мобильным меню
 
-//переключение мобайл-меню
-    const toggleMobileMenu = new MobileMenu(mobileMenu, toggleButtonMobileMenu);
-    toggleMobileMenu.setEventListeners();
+
 
 
     const validFormAuthorization = new FormValidator(formAuthorization, FORM_ERRORS.errorMessages);
@@ -116,7 +135,7 @@ import {
 
 
     //слушатели на переключение попапов.
-    buttonOpenAuthorizationPopupMobile.addEventListener('click', (event) => {
+    buttonExitMobile.addEventListener('click', (event) => {
         checkForLogin(event)
     });
 
@@ -155,7 +174,8 @@ import {
                 popupSuccess.open()
             })
             .catch((err) => {
-                sendingFormRegistration.setServerError(err.message);
+                console.log(err);
+                sendingFormRegistration.setServerError(FORM_ERRORS.errorMessages.resultError);
             })
 
     });
@@ -183,15 +203,16 @@ import {
 
             })
             .catch((err) => {
-                sendingFormAuthorization.setServerError(err.message)
+                console.log(err);
+                sendingFormAuthorization.setServerError(FORM_ERRORS.errorMessages.resultError);
             })
     });
 
 
     // работа над отрисовкой карточки
-    const showLabel = false;
+
     const apiNewsCard = new NewsApi(defaultDataNewsApi);
-    const CardList = new NewsCardList(containerCards, apiNewsCard, errorResultCards);
+    const CardList = new NewsCardList(containerCards, apiNewsCard);
 
     function drawCard(obj, searchText) {
        if( obj.urlToImage === null){
@@ -210,24 +231,24 @@ import {
             source: obj.source.name,
             image: obj.urlToImage,
         };
-        const newsCard = new NewsCard(card, templateCard, mainApi, showLabel);
+        const newsCard = new NewsCard(card, templateCard, mainApi, showLabelCard, errorPopup);
         return newsCard.createCard();
     }
 
 
-    const errorElementInputSearch = document.querySelector(".search-error");
+
 
     formNewsSearch.addEventListener("submit", (event) => {
         event.preventDefault();
         CardList.clearResults();
-        CardList.clearServerError();
         buttonForAddingNews.classList.remove("result__button_none");
         const searchText = event.target.elements.tag.value;
         //первая страница при загрузке
         const frontPage = 1;
         if(searchText.length === 0){
-                errorElementInputSearch.classList.remove('search-error_none');
-                setTimeout(()=>{errorElementInputSearch.classList.add('search-error_none')}, 1000);
+            //вывод ошибки нулевого зарпоса
+            errorElementInputSearch.classList.remove('search-error_none');
+            setTimeout(()=>{errorElementInputSearch.classList.add('search-error_none')}, 1000);
         }
         else {
             CardList.setInputTextSearch(searchText);
@@ -235,7 +256,6 @@ import {
             apiNewsCard.getArticles(searchText, formatDate(today), formatDate(weekBefore), frontPage)
                 //проверка на нулевой массиы
                 .then((res) => {
-                    console.log(res);
                     if (res.articles.length === 0) {
                         renderNotFound(true);
                         return res;
@@ -267,7 +287,8 @@ import {
                 //устанавливаем ошибку
                 .catch((err) => {
                     console.log(err);
-                    CardList.setServerError();
+                    textErrorPopup.textContent = FORM_ERRORS.errorMessages.resultError;
+                    errorPopup.openError()
 
                 })
                 //заканчиваетс отриосвка прелоудера
@@ -279,7 +300,7 @@ import {
 
 
     buttonForAddingNews.addEventListener("click", () => {
-        CardList.showMore(drawCard, buttonForAddingNews);
+        CardList.showMore(drawCard, buttonForAddingNews, errorPopup);
     })
 
 })();

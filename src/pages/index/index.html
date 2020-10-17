@@ -36,7 +36,7 @@
             <button class="header-menu__nav-mobile-toggle-button">
             </button>
 
-            <div class="header-menu__nav-mobile">
+            <div class="header-menu__nav-mobile header__mobile">
                 <nav class="header-menu__nav-mobile-content">
                     <ul class="header-menu__nav-mobile-link">
                         <li><a class="header-menu__link header-menu__link-main header-menu__link_mobile" href="#">Главная</a>
@@ -102,11 +102,6 @@
         <button class="result__button button">Показать еще</button>
     </section>
 
-    <section class="result-error">
-        <h1 class="result-error__text">Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер
-            недоступен. Подождите немного
-            и попробуйте ещё раз</h1>
-    </section>
 
     <section class="preloader">
         <i class="preloader__circle"></i>
@@ -135,6 +130,13 @@
     </section>
 </div>
 <!--все попапы-->
+<div class="popup popup-err">
+    <div class="popup__content popup__content_margin">
+    <img src="<%=require('../../images/close-popup.svg').default%>" alt="кнопка закрытия" class="popup__close">
+    <h3 class="popup__title">Произошла ошибка</h3>
+    <p class="popup-err__text"></p>
+    </div>
+</div>
 
 <div class="popup popup-auth">
 

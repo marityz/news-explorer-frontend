@@ -1,6 +1,7 @@
+import FORM_ERRORS from "../../js/constants/errorMessages";
 
 export default class NewsCard {
-    constructor(data, template, api, showLabel) {
+    constructor(data, template, api, showLabel,error) {
         this.data = data;
         this.keyword = data.keyword;
         this.title = data.title;
@@ -12,7 +13,7 @@ export default class NewsCard {
         this.template = template;
         this.api = api;
         this.showLabel = showLabel;
-        console.log(this.showLabel);
+        this.error = error;
     }
 
     createCard = () => {
@@ -99,7 +100,8 @@ export default class NewsCard {
 
                 })
                 .catch((err) =>{
-                    console.log(err)
+                    console.log(err);
+                    this._displayError();
                 })
 
         }
@@ -132,6 +134,8 @@ export default class NewsCard {
             })
             .catch((err) => {
                 console.log(err);
+                this._displayError();
+
             })
 
     };
@@ -141,6 +145,10 @@ export default class NewsCard {
             .then((res) => {
                 this.flag.classList.remove('results-card__flag_save');
                 console.log(res)
+            })
+            .catch((err)=>{
+                console.log(err);
+               this._displayError();
             })
 
     };
@@ -152,5 +160,10 @@ export default class NewsCard {
 
     _hideIconNotSaveText = () => {
         this.flagNotSaveText.classList.add("results-card__log-in_notdisplay");
+    };
+
+    _displayError = () => {
+        this.error.setErrorText(FORM_ERRORS.errorMessages.resultError);
+        this.error.openError();
     }
 }

@@ -85,21 +85,29 @@
             </template>
         </div>
     </section>
+
     <section class="preloader">
         <i class="preloader__circle"></i>
         <h3 class="preloader__text">Идет поиск новостей...</h3>
     </section>
+
     <section class="not-found">
         <img class="not-found__img" src="<%=require('../../images/not-found.svg').default%>"
              alt="изображение секции не найдено">
         <h2 class="not-found__text">Нет сохраненных новостей</h2>
         <p class="not-found__subtext"></p>
     </section>
-    <section class="result  result_margin-articles">
-        <div class="result__cards">
-        </div>
+</div>
 
-    </section>
+    <div class="popup popup-err">
+        <div class="popup__content popup__content_margin">
+            <img src="<%=require('../../images/close-popup.svg').default%>" alt="кнопка закрытия" class="popup__close">
+            <h3 class="popup__title">Произошла ошибка</h3>
+            <p class="popup-err__text"></p>
+        </div>
+    </div>
+
+
     <footer class="footer">
         <div class="footer__group">
             <p class="footer__copyright">© 2020 Supersite, Powered by News API</p>
@@ -121,7 +129,7 @@
     </footer>
 
 
-</div>
+
 <script src="<%=htmlWebpackPlugin.files.js%>"></script>
 </body>
 </html>
