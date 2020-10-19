@@ -1,5 +1,5 @@
 import {formatDate, today, weekBefore} from "../utils/time-utils";
-import {renderPreloader} from "../utils/function-utils";
+
 
 export default class NewsCardList {
     constructor(parent, api) {
@@ -18,7 +18,8 @@ export default class NewsCardList {
         });
     };
 
-    showMore = (drawCard, button, errorPopup) => {
+    showMore = (drawCard, button, errorPopup, preloader, buttonForAddingNews) => {
+        preloader.open(buttonForAddingNews);
         this.api.getArticles(this.getInputTextSearch(), formatDate(today), formatDate(weekBefore), this.count)
 
             .then((res) => {
@@ -45,7 +46,9 @@ export default class NewsCardList {
                 errorPopup.openError(err.message);
             })
 
-
+            .finally(() => {
+                preloader.close();
+            })
 
 
     };

@@ -18,7 +18,6 @@ import {
     buttonExitMobile,
     windowErrorPopup,
     closePopupErrorButton,
-    textErrorPopup,
     header,
     headerMenu,
     containerCards,

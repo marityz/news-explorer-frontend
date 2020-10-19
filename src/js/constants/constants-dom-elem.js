@@ -5,7 +5,6 @@ const buttonExitMobile = document.querySelector(".header-menu__button_mobile");
 
 const windowErrorPopup = document.querySelector(".popup-err");
 const closePopupErrorButton = windowErrorPopup.querySelector(".popup__close");
-const textErrorPopup = windowErrorPopup.querySelector(".popup-err__text");
 
 
 const header = document.querySelector(".header");
@@ -24,7 +23,6 @@ export {
     buttonExitMobile,
     windowErrorPopup,
     closePopupErrorButton,
-    textErrorPopup,
     header,
     headerMenu,
     containerCards,

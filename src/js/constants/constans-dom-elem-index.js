@@ -31,11 +31,14 @@ const templateCard = document.querySelector('#card').content;
 const formNewsSearch = document.forms.newsearch;
 const buttonForAddingNews = document.querySelector(".result__button");
 
-const windowErrorPopup = document.querySelector(".popup-err");
-const closePopupErrorButton = windowErrorPopup.querySelector(".popup__close");
-const textErrorPopup = windowErrorPopup.querySelector( ".popup-err__text");
+
+
 const errorElementInputSearch = document.querySelector(".search-error");
 
+
+const templatePreloader = document.querySelector("#preloader").content;
+const containerPreloader = document.querySelector(".result");
+const referenceElementPreloader = document.querySelector(".result__title");
 
 export {
 
@@ -54,8 +57,8 @@ export {
     templateCard,
     formNewsSearch,
     buttonForAddingNews,
-    windowErrorPopup,
-    closePopupErrorButton,
-    textErrorPopup,
-    errorElementInputSearch
+    errorElementInputSearch,
+    templatePreloader,
+    containerPreloader,
+    referenceElementPreloader
 }

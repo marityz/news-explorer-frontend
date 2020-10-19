@@ -39,11 +39,12 @@ import {
     templateCard,
     formNewsSearch,
     buttonForAddingNews,
-    errorElementInputSearch
+    errorElementInputSearch,
+    templatePreloader,
+    containerPreloader,
+    referenceElementPreloader
 
 } from "../../js/constants/constans-dom-elem-index";
-
-
 
 import {
     today,
@@ -53,15 +54,18 @@ import {
 } from "../../js/utils/time-utils"
 
 import {
-    renderPreloader,
     renderNotFound,
 } from "../../js/utils/function-utils"
+
+import Preloader from "../../js/components/Preloader";
 
 (function () {
 
     const showLabelCard = false;
 
     //объекты
+
+    const preloader = new Preloader(containerPreloader, templatePreloader);
 
     const errorPopup = new Popup(windowErrorPopup, closePopupErrorButton);
     errorPopup.setEventListeners();
@@ -247,12 +251,13 @@ import {
         const frontPage = 1;
         if(searchText.length === 0){
             //вывод ошибки нулевого зарпоса
+            containerPreloader.classList.add("result_displaynone");
             errorElementInputSearch.classList.remove('search-error_none');
             setTimeout(()=>{errorElementInputSearch.classList.add('search-error_none')}, 1000);
         }
         else {
             CardList.setInputTextSearch(searchText);
-            renderPreloader(true);
+            preloader.open(referenceElementPreloader);
             apiNewsCard.getArticles(searchText, formatDate(today), formatDate(weekBefore), frontPage)
                 //проверка на нулевой массиы
                 .then((res) => {
@@ -292,14 +297,16 @@ import {
                 })
                 //заканчиваетс отриосвка прелоудера
                 .finally(() => {
-                    renderPreloader(false);
+                    preloader.close();
                 })
         }
     });
 
 
     buttonForAddingNews.addEventListener("click", () => {
-        CardList.showMore(drawCard, buttonForAddingNews, errorPopup);
+
+        CardList.showMore(drawCard, buttonForAddingNews, errorPopup, preloader, buttonForAddingNews);
+
     })
 
 })();

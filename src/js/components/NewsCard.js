@@ -57,7 +57,8 @@ export default class NewsCard {
     _eventListenerClick = (event) => {
         if (event.target === this.flag && localStorage.getItem("isLoggedIn") === "true") {
             this._saveAndDeleteCard();
-        } else {
+        }
+        else {
             window.open(this.link);
         }
 
