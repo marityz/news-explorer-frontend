@@ -14,14 +14,13 @@ export default class NewsCardList {
 
     renderResults = (cards) => {
         cards.forEach((card) => {
-            return this.addCard(card);
+            this.addCard(card);
         });
     };
 
     showMore = (drawCard, button, errorPopup, preloader, buttonForAddingNews) => {
         preloader.open(buttonForAddingNews);
         this.api.getArticles(this.getInputTextSearch(), formatDate(today), formatDate(weekBefore), this.count)
-
             .then((res) => {
                 if (res.articles.length < 3) {
                     button.classList.add("result__button_none");

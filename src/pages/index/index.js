@@ -254,7 +254,10 @@ import Preloader from "../../js/components/Preloader";
             containerPreloader.classList.add("result_displaynone");
             errorElementInputSearch.classList.remove('search-error_none');
             setTimeout(()=>{errorElementInputSearch.classList.add('search-error_none')}, 1000);
+            return;
         }
+
+
         else {
             CardList.setInputTextSearch(searchText);
             preloader.open(referenceElementPreloader);
