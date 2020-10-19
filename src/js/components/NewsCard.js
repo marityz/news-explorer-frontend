@@ -1,7 +1,7 @@
 import FORM_ERRORS from "../../js/constants/errorMessages";
 
 export default class NewsCard {
-    constructor(data, template, api, showLabel,error) {
+    constructor(data, template, api, showLabel, error) {
         this.data = data;
         this.keyword = data.keyword;
         this.title = data.title;
@@ -30,7 +30,7 @@ export default class NewsCard {
 
         //действия для создания карточки
         // отображение карточки на странице артикле
-        if(this.showLabel && localStorage.getItem("isLoggedIn") === "true"){
+        if (this.showLabel && localStorage.getItem("isLoggedIn") === "true") {
             this.label.textContent = this.data.keyword;
             this.label.classList.remove("results-card__label_none");
             this.flag.classList.remove("results-card__flag_save");
@@ -42,7 +42,7 @@ export default class NewsCard {
         this.sourceCard.textContent = this.source;
         this.sourceCard.setAttribute("href", this.link);
         this.timeCard.textContent = this.time;
-        this.imgCard.setAttribute("src",  this.image);
+        this.imgCard.setAttribute("src", this.image);
         this._renderIconSaveCard();
         this._setEventListeners();
         return this.card;
@@ -57,8 +57,7 @@ export default class NewsCard {
     _eventListenerClick = (event) => {
         if (event.target === this.flag && localStorage.getItem("isLoggedIn") === "true") {
             this._saveAndDeleteCard();
-        }
-        else {
+        } else {
             window.open(this.link);
         }
 
@@ -82,17 +81,14 @@ export default class NewsCard {
         if (localStorage.getItem("isLoggedIn") === "true") {
             this.api.getArticles()
                 .then((res) => {
-                    if(!(res.length === 0)) {
-                        res.forEach((card) => {
-                            if (card.link === this.link && card.date === this.time) {
-                                this._id = card._id;
-                                this.flag.classList.add('results-card__flag_save');
-                            }
-                        });
-                    }
-
+                    res.forEach((card) => {
+                        if (card.link === this.link && card.date === this.time) {
+                            this._id = card._id;
+                            this.flag.classList.add('results-card__flag_save');
+                        }
+                    });
                 })
-                .catch((err) =>{
+                .catch((err) => {
                     this.error.openError(err.message);
                 })
 
@@ -106,7 +102,6 @@ export default class NewsCard {
             this._saveCard()
         }
     };
-
 
 
     _saveCard = () => {
@@ -141,7 +136,7 @@ export default class NewsCard {
             .then((res) => {
                 this.flag.classList.remove('results-card__flag_save');
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err);
                 this.error.openError(FORM_ERRORS.errorMessages.resultError);
             })

@@ -16,19 +16,19 @@ export default class MobileMenu {
 
             if (this.color) {
                 this.toggleButton.style.backgroundImage = "url(./images/menu-mobile-black.svg)";
-            } else {
-                this.toggleButton.style.backgroundImage = "url(./images/menuicon-mobile-menu.svg)";
+                return;
             }
+            this.toggleButton.style.backgroundImage = "url(./images/menuicon-mobile-menu.svg)";
+            return;
 
-        } else {
-            this.menu.classList.add('header-menu__nav-mobile_open');
-            if (this.color) {
-                this.toggleButton.style.backgroundImage = "url(./images/cross-sign.svg)";
-
-            } else {
-                this.toggleButton.style.backgroundImage = "url(./images/header-close.svg)";
-            }
         }
+        this.menu.classList.add('header-menu__nav-mobile_open');
+        if (this.color) {
+            this.toggleButton.style.backgroundImage = "url(./images/cross-sign.svg)";
+            return;
+        }
+        this.toggleButton.style.backgroundImage = "url(./images/header-close.svg)";
+
     }
 
 

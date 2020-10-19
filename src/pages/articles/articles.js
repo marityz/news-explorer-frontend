@@ -82,13 +82,12 @@ import {
     api.getArticles()
         .then((res) => {
             const cards = res.map((card) => {
-                return drawCard(card);
+               return  drawCard(card);
             });
             cardList.renderResults(cards);
 
         })
         .catch((err) => {
-            console.log(err);
             errorPopup.openError(FORM_ERRORS.errorMessages.resultError);
         });
 

@@ -41,7 +41,6 @@ export default class NewsCardList {
             })
 
             .catch((err) => {
-                console.log(err);
                 errorPopup.openError(err.message);
             })
 

@@ -7,6 +7,7 @@ export default class NewsApi {
         return fetch(`${this.options.baseUrl}?q=${text}&from=${startdate}&to=${todate}&page=${page}&pageSize=3&apiKey=${this.options.apiKey}`, {
             method: 'GET',
 
+
         })
 
             .then((res) => this._returnJson(res));

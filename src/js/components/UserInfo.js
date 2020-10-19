@@ -57,7 +57,6 @@ export default class UserInfo {
 
             })
             .catch((err) => {
-                console.log(err);
                 error.openError(err.message)
 
             });

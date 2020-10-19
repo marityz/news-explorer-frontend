@@ -90,12 +90,9 @@ import Preloader from "../../js/components/Preloader";
     }
 
 
-
     //проверка на логин
     localStorage.getItem("username") ? headerMenuNotLogin.getAuthContent() : 0;
     localStorage.getItem("username") ? headerMenuMobileNotLogin.getAuthContent() : 0;
-
-
 
 
     const validFormAuthorization = new FormValidator(formAuthorization, FORM_ERRORS.errorMessages);
@@ -219,14 +216,14 @@ import Preloader from "../../js/components/Preloader";
     const CardList = new NewsCardList(containerCards, apiNewsCard);
 
     function drawCard(obj, searchText) {
-       if( obj.urlToImage === null){
-           obj.urlToImage = notImgCard;
-       }
-        if( obj.description === null){
+        if (obj.urlToImage === null) {
+            obj.urlToImage = notImgCard;
+        }
+        if (obj.description === null) {
             obj.description = "  ";
         }
 
-       const card = {
+        const card = {
             keyword: searchText,
             title: obj.title,
             link: obj.url,
@@ -240,8 +237,6 @@ import Preloader from "../../js/components/Preloader";
     }
 
 
-
-
     formNewsSearch.addEventListener("submit", (event) => {
         event.preventDefault();
         CardList.clearResults();
@@ -249,16 +244,14 @@ import Preloader from "../../js/components/Preloader";
         const searchText = event.target.elements.tag.value;
         //первая страница при загрузке
         const frontPage = 1;
-        if(searchText.length === 0){
+        if (searchText.length === 0) {
             //вывод ошибки нулевого зарпоса
             containerPreloader.classList.add("result_displaynone");
             errorElementInputSearch.classList.remove('search-error_none');
-            setTimeout(()=>{errorElementInputSearch.classList.add('search-error_none')}, 1000);
-            return;
-        }
-
-
-        else {
+            setTimeout(() => {
+                errorElementInputSearch.classList.add('search-error_none')
+            }, 1000);
+        } else {
             CardList.setInputTextSearch(searchText);
             preloader.open(referenceElementPreloader);
             apiNewsCard.getArticles(searchText, formatDate(today), formatDate(weekBefore), frontPage)
@@ -307,9 +300,7 @@ import Preloader from "../../js/components/Preloader";
 
 
     buttonForAddingNews.addEventListener("click", () => {
-
         CardList.showMore(drawCard, buttonForAddingNews, errorPopup, preloader, buttonForAddingNews);
-
     })
 
 })();

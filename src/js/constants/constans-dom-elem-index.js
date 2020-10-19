@@ -1,6 +1,3 @@
-
-
-
 //работа с попапами
 //авторизация
 const modalWindowAuthorization = document.querySelector('.popup-auth');
@@ -26,11 +23,9 @@ const buttonClosePopupSuccess = modalWindowPopupSuccess.querySelector('.popup__c
 const linkOpenPopupAuthorization = document.querySelector('.popup__form_success-link');
 
 
-
 const templateCard = document.querySelector('#card').content;
 const formNewsSearch = document.forms.newsearch;
 const buttonForAddingNews = document.querySelector(".result__button");
-
 
 
 const errorElementInputSearch = document.querySelector(".search-error");

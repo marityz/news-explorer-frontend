@@ -1,5 +1,3 @@
-
-
 function leftPad(num) {
     return num >= 9 ? num : `0${num}`;
 }
@@ -15,7 +13,7 @@ function formatDate(date) {
 }
 
 
-function formatDateRenderCard (dateString){
+function formatDateRenderCard(dateString) {
     const date = new Date(dateString);
     return `${date.toLocaleDateString("ru-RU", {
         day: "numeric",

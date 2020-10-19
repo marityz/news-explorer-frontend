@@ -1,5 +1,5 @@
 const PROPS = {
-    isLoggedIn:" ",
+    isLoggedIn: " ",
     name: '',
 };
 
@@ -16,7 +16,7 @@ const defaultDataMainApi = {
 const defaultDataNewsApi = {
     //baseUrl: https://nomoreparties.co/news/v2/top-headlines?country=us&apiKey=[ваш_ключ]
     //baseUrl: 'https://newsapi.org/v2/everything',
-    baseUrl:'https://nomoreparties.co/news/v2/everything',
+    baseUrl: 'https://nomoreparties.co/news/v2/everything',
     apiKey: 'adac5ef9ef4148829be412ee2d1ebb81'
     //apiKey: 'd3848ea6d4654c90be9e1e1a22f6c998',
 };

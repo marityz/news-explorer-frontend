@@ -1,6 +1,6 @@
 import NewsCard from "./NewsCard";
 
-export default class ArticlesCard extends NewsCard{
+export default class ArticlesCard extends NewsCard {
     constructor(data, template, api, showLabel) {
         super(data, template, api, showLabel);
     }
@@ -9,9 +9,9 @@ export default class ArticlesCard extends NewsCard{
         this.api.deleteCard(this.data.id)
             .then((res) => {
                 document.location.reload();
-                console.log( "Карточка удалена")
+                console.log("Карточка удалена")
             })
-            .catch((err)=>{
+            .catch((err) => {
                 console.log(err)
             })
 

@@ -13,9 +13,8 @@ export default class Form {
     };
 
 
-
     setEventListeners = (listener) => {
         this.form.addEventListener("submit", listener);
-        this.form.addEventListener("input", this.clearServerError )
+        this.form.addEventListener("input", this.clearServerError)
     };
 }
