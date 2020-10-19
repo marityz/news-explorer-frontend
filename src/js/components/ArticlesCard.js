@@ -6,11 +6,13 @@ export default class ArticlesCard extends NewsCard{
     }
 
     _deleteCard = () => {
-        console.log(this.data);
         this.api.deleteCard(this.data.id)
             .then((res) => {
                 document.location.reload();
                 console.log( "Карточка удалена")
+            })
+            .catch((err)=>{
+                console.log(err)
             })
 
     };

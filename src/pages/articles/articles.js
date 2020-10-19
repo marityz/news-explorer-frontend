@@ -47,7 +47,7 @@ import {
 
     const userInfo = new UserInfo(header, templateUserInfo, api);
 
-    userInfo.getUserData();
+    userInfo.getUserData(errorPopup);
 
     const cardList = new NewsCardList(containerCards, api, null);
 
@@ -61,9 +61,6 @@ import {
     buttonExitMobile.addEventListener("click", () => {
         headerArticles.logOut();
     });
-
-
-
 
 
     function drawCard(obj) {
@@ -89,13 +86,14 @@ import {
                 return drawCard(card);
             });
             cardList.renderResults(cards);
+
         })
         .catch((err) => {
             console.log(err);
-            textErrorPopup.textContent = FORM_ERRORS.errorMessages.resultError;
-            errorPopup.openError();
+            errorPopup.openError(FORM_ERRORS.errorMessages.resultError);
         });
 
-})();
+})
+();
 
 

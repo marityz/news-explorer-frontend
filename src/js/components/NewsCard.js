@@ -6,7 +6,7 @@ export default class NewsCard {
         this.keyword = data.keyword;
         this.title = data.title;
         this.text = data.text;
-        this.time = this._formatDate(this.data.date);
+        this.time = data.date;
         this.source = data.source;
         this.link = data.link;
         this.image = data.image;
@@ -29,9 +29,13 @@ export default class NewsCard {
         this.label = this.card.querySelector(".results-card__label");
 
         //действия для создания карточки
+        // отображение карточки на странице артикле
         if(this.showLabel && localStorage.getItem("isLoggedIn") === "true"){
             this.label.textContent = this.data.keyword;
             this.label.classList.remove("results-card__label_none");
+            this.flag.classList.remove("results-card__flag_save");
+            this.flag.classList.remove("results-card__flag");
+            this.flag.classList.add("results-card__icondelete");
         }
         this.titleCard.textContent = this.title;
         this.textCard.textContent = this.text;
@@ -39,7 +43,7 @@ export default class NewsCard {
         this.sourceCard.setAttribute("href", this.link);
         this.timeCard.textContent = this.time;
         this.imgCard.setAttribute("src",  this.image);
-        this._renderIconLogIn();
+        this._renderIconSaveCard();
         this._setEventListeners();
         return this.card;
     };
@@ -60,13 +64,6 @@ export default class NewsCard {
 
     };
 
-    _formatDate = (dateString) => {
-        const date = new Date(dateString);
-        return `${date.toLocaleDateString("ru-RU", {
-            day: "numeric",
-            month: "long",
-        })}, ${date.getFullYear()}`;
-    };
 
     _renderIcon = () => {
         if (localStorage.getItem("isLoggedIn") === "false") {
@@ -80,28 +77,22 @@ export default class NewsCard {
 
     };
 
-    _renderIconLogIn = () => {
+    _renderIconSaveCard = () => {
         if (localStorage.getItem("isLoggedIn") === "true") {
             this.api.getArticles()
                 .then((res) => {
-                    if (res.length === 0) {
-
-                    } else {
+                    if(!(res.length === 0)) {
                         res.forEach((card) => {
                             if (card.link === this.link && card.date === this.time) {
                                 this._id = card._id;
                                 this.flag.classList.add('results-card__flag_save');
-                            } else {
-
                             }
-                        })
-
+                        });
                     }
 
                 })
                 .catch((err) =>{
-                    console.log(err);
-                    this._displayError();
+                    this.error.openError(err.message);
                 })
 
         }
@@ -116,7 +107,9 @@ export default class NewsCard {
     };
 
 
+
     _saveCard = () => {
+        console.log(this.time);
         const obj = {
             keyword: this.keyword,
             title: this.title,
@@ -129,12 +122,14 @@ export default class NewsCard {
 
         this.api.createArticle(obj)
             .then((res) => {
+                if (res.message) {
+                    return Promise.reject(res);
+                }
                 this._id = res.data._id;
                 this.flag.classList.add('results-card__flag_save');
             })
             .catch((err) => {
-                console.log(err);
-                this._displayError();
+                this.error.openError(err.message);
 
             })
 
@@ -144,11 +139,10 @@ export default class NewsCard {
         this.api.deleteCard(this._id)
             .then((res) => {
                 this.flag.classList.remove('results-card__flag_save');
-                console.log(res)
             })
             .catch((err)=>{
                 console.log(err);
-               this._displayError();
+                this.error.openError(FORM_ERRORS.errorMessages.resultError);
             })
 
     };
@@ -162,8 +156,4 @@ export default class NewsCard {
         this.flagNotSaveText.classList.add("results-card__log-in_notdisplay");
     };
 
-    _displayError = () => {
-        this.error.setErrorText(FORM_ERRORS.errorMessages.resultError);
-        this.error.openError();
-    }
 }

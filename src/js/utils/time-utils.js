@@ -14,9 +14,20 @@ function formatDate(date) {
     )}`;
 }
 
+
+function formatDateRenderCard (dateString){
+    const date = new Date(dateString);
+    return `${date.toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+    })}, ${date.getFullYear()}`;
+}
+
+
 export {
     leftPad,
     today,
     weekBefore,
-    formatDate
+    formatDate,
+    formatDateRenderCard
 }

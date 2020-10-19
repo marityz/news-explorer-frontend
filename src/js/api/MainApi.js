@@ -7,8 +7,8 @@ export default class MainApi {
     signUp = (email, password, name) => {
         return fetch(`${this.url}/signup`, {
             method: 'POST',
-            credentials: 'include',
             headers: this.headers,
+            credentials: 'include',
             body: JSON.stringify({
                 email: email,
                 password: password,
@@ -22,8 +22,8 @@ export default class MainApi {
     signIn = (email, password) => {
         return fetch(`${this.url}/signin`, {
             method: 'POST',
-            credentials: 'include',
             headers: this.headers,
+            credentials: 'include',
             body: JSON.stringify({
                 email: email,
                 password: password,
@@ -35,8 +35,8 @@ export default class MainApi {
     getArticles = () => {
         return fetch(`${this.url}/articles`, {
             method: "GET",
-            credentials: 'include',
             headers: this.headers,
+            credentials: 'include',
         })
             .then((res) => this._returnJson(res))
     };

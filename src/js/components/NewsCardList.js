@@ -1,5 +1,5 @@
 import {formatDate, today, weekBefore} from "../utils/time-utils";
-import FORM_ERRORS from "../constants/errorMessages";
+import {renderPreloader} from "../utils/function-utils";
 
 export default class NewsCardList {
     constructor(parent, api) {
@@ -9,7 +9,7 @@ export default class NewsCardList {
     }
 
     addCard = (card) => {
-        this.parent.appendChild(card);
+        this.parent.append(card);
     };
 
     renderResults = (cards) => {
@@ -20,6 +20,7 @@ export default class NewsCardList {
 
     showMore = (drawCard, button, errorPopup) => {
         this.api.getArticles(this.getInputTextSearch(), formatDate(today), formatDate(weekBefore), this.count)
+
             .then((res) => {
                 if (res.articles.length < 3) {
                     button.classList.add("result__button_none");
@@ -41,9 +42,10 @@ export default class NewsCardList {
 
             .catch((err) => {
                 console.log(err);
-                textErrorPopup.textContent = FORM_ERRORS.errorMessages.resultError;
-                errorPopup.openError()
+                errorPopup.openError(err.message);
             })
+
+
 
 
     };
@@ -60,8 +62,6 @@ export default class NewsCardList {
     getInputTextSearch = () => {
         return this.inputText;
     };
-
-
 
 
 }

@@ -1,3 +1,5 @@
+import FORM_ERRORS from "../constants/errorMessages";
+
 export default class UserInfo {
     constructor(parent, template, api) {
         this.parent = parent;
@@ -5,10 +7,9 @@ export default class UserInfo {
         this.api = api;
     }
 
-    _create = (numberOfArticles,  keywords) => {
-
-        //приходит количество всех статей, массив КС
-
+    _create = (numberOfArticles, keywords) => {
+        console.log(keywords, numberOfArticles);
+        //приходит массив статей, упорядочный массив КС
         this.userInfo = this.template.cloneNode(true).querySelector(".user-info");
         //нашли все элементы
         this.name = this.userInfo.querySelector(".user-info__title-name");
@@ -18,19 +19,20 @@ export default class UserInfo {
         this.tag = this.userInfo.querySelector(".user-info__tag");
         this.subtext = this.userInfo.querySelector(".user-info__number");
         this.numTag = this.userInfo.querySelector(".user-info__numtag");
+
         if (keywords.length === 0) {
             this.text.classList.add('user-info__text_none');
         }
-        if (keywords.length <= 3) {
+        if (keywords.length < 3 || keywords.length === 3) {
             this.subtext.classList.add('user-info__num_none');
             this.tag.textContent = keywords;
         }
-        if(keywords.length > 3){
+        if (keywords.length > 3) {
             this.numTag.textContent = keywords.length - 2;
             this.tag.textContent = keywords.slice(0, 2);
         }
         this.name.textContent = localStorage.getItem("username");
-        this.numSaveArticles.textContent = numberOfArticles;
+        this.numSaveArticles.textContent = numberOfArticles.length;
 
 
         return this.parent.appendChild(this.userInfo);
@@ -38,9 +40,10 @@ export default class UserInfo {
     };
 
 
-    getUserData = () => {
+    getUserData = (error) => {
         this.api.getArticles()
             .then((res) => {
+
                 const keywords = res.map((elem) => {
                     return elem.keyword;
                 });
@@ -49,10 +52,14 @@ export default class UserInfo {
                     return ` ${obj.key}`
                 });
 
-                this._create(res.length, sortWord);
+                this._create(res, sortWord);
+
+
             })
-            .catch((err)=>{
-                console.log(err)
+            .catch((err) => {
+                console.log(err);
+                error.openError(err.message)
+
             });
     };
 

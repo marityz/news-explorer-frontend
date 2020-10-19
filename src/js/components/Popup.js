@@ -28,17 +28,14 @@ export default class Popup {
         document.removeEventListener('keyup', this._handleEscClose);
         document.removeEventListener('mousedown', this._closePopupMousedown);
     };
-    openError = () => {
+
+    openError = (text) => {
+        this.modalWindow.querySelector(".popup-err__text").textContent = text;
         this.modalWindow.classList.add("popup_is-opened");
         document.addEventListener('keyup', this._handleEscClose);
         document.addEventListener('mousedown', this._closePopupMousedown);
     };
 
-
-     setErrorText =(text)=>{
-         this.modalWindow.querySelector("popup-err__text").textContent = text;
-
-     };
     //закрытие по ESC
     _handleEscClose = (event) => {
         if (event.keyCode === 27) {

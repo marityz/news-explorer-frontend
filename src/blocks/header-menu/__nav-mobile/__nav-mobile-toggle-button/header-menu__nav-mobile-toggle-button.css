@@ -3,11 +3,15 @@
     background-color: transparent;
     padding: 0;
     border: none;
-    background-image: url("../../../../images/header-close.svg");
+    background-image: url("../../../../images/cross-sign.svg");
     z-index: 3;
     outline: none;
 }
 
+.toggle-button{
+    display: none;
+    background-image: url("../../../../images/header-close.svg");
+}
 
 .header-menu__nav-mobile-toggle-button:hover{
     outline: none;

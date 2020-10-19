@@ -17,7 +17,6 @@ import {
     buttonExitMobile,
     windowErrorPopup,
     closePopupErrorButton,
-    textErrorPopup,
     header,
     headerMenu,
     containerCards,
@@ -49,7 +48,8 @@ import {
 import {
     today,
     weekBefore,
-    formatDate
+    formatDate,
+    formatDateRenderCard
 } from "../../js/utils/time-utils"
 
 import {
@@ -175,7 +175,7 @@ import {
             })
             .catch((err) => {
                 console.log(err);
-                sendingFormRegistration.setServerError(FORM_ERRORS.errorMessages.resultError);
+                sendingFormRegistration.setServerError(err.message);
             })
 
     });
@@ -204,7 +204,7 @@ import {
             })
             .catch((err) => {
                 console.log(err);
-                sendingFormAuthorization.setServerError(FORM_ERRORS.errorMessages.resultError);
+                sendingFormAuthorization.setServerError(err.message);
             })
     });
 
@@ -227,7 +227,7 @@ import {
             title: obj.title,
             link: obj.url,
             text: obj.description,
-            date: obj.publishedAt,
+            date: formatDateRenderCard(obj.publishedAt),
             source: obj.source.name,
             image: obj.urlToImage,
         };
@@ -287,8 +287,7 @@ import {
                 //устанавливаем ошибку
                 .catch((err) => {
                     console.log(err);
-                    textErrorPopup.textContent = FORM_ERRORS.errorMessages.resultError;
-                    errorPopup.openError()
+                    errorPopup.openError(FORM_ERRORS.errorMessages.resultError);
 
                 })
                 //заканчиваетс отриосвка прелоудера
