@@ -280,9 +280,6 @@ import Preloader from "../../js/components/Preloader";
                         return drawCard(obj, searchText)
                     });
                     CardList.renderResults(cards);
-                })
-                //очищаем форму
-                .then(() => {
                     formNewsSearch.reset();
                 })
                 //устанавливаем ошибку
