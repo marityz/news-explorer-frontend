@@ -1,5 +1,6 @@
 @import url('./__circle/preloader__circle.css');
 @import url('./__text/preloader__text.css');
+@import url('./_activ/preloader_activ.css');
 
 .preloader{
 	display: none;
@@ -7,4 +8,6 @@
 	max-width: 1440px;
 	margin: auto;
 	padding-top: 80px;
+	max-height: 282px;
 }
+

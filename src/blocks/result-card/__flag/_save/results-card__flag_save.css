@@ -1,0 +1,6 @@
+.results-card__flag_save.results-card__flag{
+    background-image: url("../../../../images/bookmark.svg");
+}
+.results-card__flag_save.results-card__flag:hover{
+    background-image: url("../../../../images/bookmark.svg");
+}

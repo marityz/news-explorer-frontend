@@ -7,3 +7,12 @@
     padding: 12px 19px;
 
 }
+
+
+.user-info__button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 19px;
+    width: max-content;
+}

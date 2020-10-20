@@ -1,5 +1,6 @@
 .result_margin-articles{
     padding: 62px 106px 0px 106px;
+    min-height: 33vh;
 }
 
 @media screen  and (min-width: 760px) and (max-width: 1023px){

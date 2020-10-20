@@ -9,12 +9,12 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 module.exports = {
     entry: {
-        main: './src/script/index.js',
-        articles: './src/script/articles.js',
+        main: './src/pages/index/index.js',
+        articles: './src/pages/articles/articles.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: './script/[name].[chunkhash].js'
+        filename: './js/[name].[chunkhash].js'
     },
     module: {
         rules: [
@@ -89,7 +89,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: false,
             hash: true,
-            template: './src/index.html',
+            template: './src/pages/index/index.html',
             filename: 'index.html',
             chunks: ['main'],
         }),
@@ -97,7 +97,7 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: false,
             hash: true,
-            template: './src/articles.html',
+            template: './src/pages/articles/articles.html',
             filename: 'articles.html',
             chunks: ['articles']
         }),

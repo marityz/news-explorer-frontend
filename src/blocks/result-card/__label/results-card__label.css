@@ -16,6 +16,9 @@
 
 
 }
+.results-card__label_none.results-card__label{
+    display: none;
+}
 
 
 @media screen  and (min-width: 760px) and (max-width: 1023px) {
